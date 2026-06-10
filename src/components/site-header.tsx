@@ -48,7 +48,7 @@ export function SiteHeader() {
           <Link
             to="/"
             onClick={() => setOpen(false)}
-            aria-label="Ratter Studios — Home"
+            aria-label="Ratter Studios - Home"
             className="group relative z-10"
           >
             <img
@@ -97,7 +97,7 @@ export function SiteHeader() {
         </div>
       </header>
 
-      {/* Mobile menu — sibling of the header so no ancestor filter/transform can
+      {/* Mobile menu - sibling of the header so no ancestor filter/transform can
           break its fixed positioning. Solid backdrop for readability. */}
       <div
         aria-hidden={!open}

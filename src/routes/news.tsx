@@ -7,13 +7,13 @@ import { InnerCircleForm } from "@/components/inner-circle-form";
 export const Route = createFileRoute("/news")({
   head: () => ({
     meta: [
-      { title: "Community — Ratter Studios" },
+      { title: "Community - Ratter Studios" },
       {
         name: "description",
         content:
           "Join the Inner Circle. Behind-the-scenes research, early access, and the conversation around Järntorget.",
       },
-      { property: "og:title", content: "The Inner Circle — Ratter Studios" },
+      { property: "og:title", content: "The Inner Circle - Ratter Studios" },
       {
         property: "og:description",
         content:
@@ -46,7 +46,7 @@ function CommunityPage() {
         </h1>
         <p className="enter mt-8 text-lg leading-relaxed text-foreground/70" style={delay(400)}>
           We don't believe in newsletters that go silent for months. We share the raw research, the
-          false starts, and the candlelit breakthroughs — as they happen.
+          false starts, and the candlelit breakthroughs - as they happen.
         </p>
         <p className="enter mt-6 leading-relaxed text-foreground/80" style={delay(500)}>
           Join us for major development updates straight from the archives, early looks at upcoming
@@ -110,7 +110,7 @@ function CommunityPage() {
                 The <em className="text-primary">Field Notes</em>
               </h2>
               <p className="mt-5 leading-relaxed text-foreground/65">
-                Short dispatches from the archive — strange entries, surprising characters, the
+                Short dispatches from the archive - strange entries, surprising characters, the
                 day-to-day of building a 17th-century city in pixels.
               </p>
               <p className="mt-8 inline-flex items-center gap-2.5 text-sm italic text-foreground/60 transition-colors duration-300 group-hover:text-primary">

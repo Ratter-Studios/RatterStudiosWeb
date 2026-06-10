@@ -4,13 +4,13 @@ import { SiteLayout } from "@/components/site-layout";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy — Ratter Studios" },
+      { title: "Privacy Policy - Ratter Studios" },
       {
         name: "description",
         content:
           "How Ratter Studios collects and handles your data. GDPR-compliant, no third-party sales, unsubscribe anytime.",
       },
-      { property: "og:title", content: "Privacy Policy — Ratter Studios" },
+      { property: "og:title", content: "Privacy Policy - Ratter Studios" },
       { property: "og:description", content: "How Ratter Studios collects and handles your data." },
       { property: "og:url", content: "/privacy" },
     ],
@@ -93,7 +93,7 @@ function PrivacyPage() {
             <p className="mt-4">
               Under the GDPR you have the right to access, correct, export, or delete your personal
               data, and to withdraw your consent at any time. You can unsubscribe from every email
-              we send via the link in the footer of that email — one click, no questions asked. To
+              we send via the link in the footer of that email - one click, no questions asked. To
               exercise any other right, email{" "}
               <a href="mailto:hello@ratter.studio" className="text-primary hover:underline">
                 hello@ratter.studio

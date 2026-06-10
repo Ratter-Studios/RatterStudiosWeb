@@ -11,13 +11,13 @@ import shot3 from "@/assets/stockholm-shot-3.jpg";
 export const Route = createFileRoute("/games")({
   head: () => ({
     meta: [
-      { title: "Järntorget — Ratter Studios" },
+      { title: "Järntorget - Ratter Studios" },
       {
         name: "description",
         content:
-          "Järntorget — our first playable history. A cinematic narrative experience set in 1646 Stockholm.",
+          "Järntorget - our first playable history. A cinematic narrative experience set in 1646 Stockholm.",
       },
-      { property: "og:title", content: "Järntorget — Ratter Studios" },
+      { property: "og:title", content: "Järntorget - Ratter Studios" },
       {
         property: "og:description",
         content: "A cinematic narrative experience set in 1646 Stockholm. Coming soon.",
@@ -82,7 +82,7 @@ function GamesPage() {
           >
             On the iron-market square, beneath the smoke of the foundries, a maid walks errands that
             will decide a court lady's fate. A whispered story drawn from the silence of the
-            archives — where every name, every ledger, every shadow is real.
+            archives - where every name, every ledger, every shadow is real.
           </p>
         </div>
       </section>
@@ -144,7 +144,7 @@ function GamesPage() {
           <Reveal delay={120}>
             <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/70">Release</p>
             <p className="mt-5 leading-[1.85] text-foreground/75">
-              PC — first chapter releasing 2026. Wishlist details and trailer to follow.
+              PC - first chapter releasing 2026. Wishlist details and trailer to follow.
             </p>
           </Reveal>
         </div>

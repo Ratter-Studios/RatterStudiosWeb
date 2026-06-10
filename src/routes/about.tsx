@@ -6,13 +6,13 @@ import { Reveal } from "@/components/reveal";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "Our Story — Ratter Studios" },
+      { title: "Our Story - Ratter Studios" },
       {
         name: "description",
         content:
-          "Ratter Studios — an independent studio born from a love of history, archives, and the stories left untold.",
+          "Ratter Studios - an independent studio born from a love of history, archives, and the stories left untold.",
       },
-      { property: "og:title", content: "Our Story — Ratter Studios" },
+      { property: "og:title", content: "Our Story - Ratter Studios" },
       {
         property: "og:description",
         content: "An independent studio born from a love of history and the stories left untold.",
@@ -28,12 +28,12 @@ const pillars = [
   {
     num: "01",
     title: "Archival Truth",
-    body: "We work from real court records, parish books, and historical data. No Hollywood tropes — only what the past actually whispered.",
+    body: "We work from real court records, parish books, and historical data. No Hollywood tropes - only what the past actually whispered.",
   },
   {
     num: "02",
     title: "A Living World",
-    body: "History is bright, warm, and human. We capture the authentic atmosphere of 1646 — candlelit rooms, crowded streets, breath in the cold.",
+    body: "History is bright, warm, and human. We capture the authentic atmosphere of 1646 - candlelit rooms, crowded streets, breath in the cold.",
   },
   {
     num: "03",
@@ -66,7 +66,7 @@ function StoryPage() {
       <section className="mx-auto max-w-2xl space-y-8 px-6 pb-24 text-lg leading-[1.85] text-foreground/75 md:px-8">
         <p className="enter" style={delay(450)}>
           Ratter Studios was founded by a small team of writers, historians, and game-makers who
-          couldn't shake the feeling that the most extraordinary stories were already written —
+          couldn't shake the feeling that the most extraordinary stories were already written -
           buried in court ledgers, parish books, and the quiet margins of the archive.
         </p>
         <p className="enter" style={delay(550)}>

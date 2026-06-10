@@ -8,7 +8,7 @@ type RevealProps = {
 };
 
 /**
- * Fades content up once it scrolls into view. Use below the fold only —
+ * Fades content up once it scrolls into view. Use below the fold only -
  * above-the-fold content should use the CSS `.enter` class instead so it
  * animates immediately without waiting for hydration.
  */

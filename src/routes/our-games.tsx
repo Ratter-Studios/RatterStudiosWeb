@@ -7,12 +7,12 @@ import keyart from "@/assets/stockholm-keyart.jpg";
 export const Route = createFileRoute("/our-games")({
   head: () => ({
     meta: [
-      { title: "Our Games — Ratter Studios" },
+      { title: "Our Games - Ratter Studios" },
       {
         name: "description",
-        content: "The catalog of games from Ratter Studios — cinematic, historical, hand-crafted.",
+        content: "The catalog of games from Ratter Studios - cinematic, historical, hand-crafted.",
       },
-      { property: "og:title", content: "Our Games — Ratter Studios" },
+      { property: "og:title", content: "Our Games - Ratter Studios" },
       { property: "og:description", content: "The catalog of games from Ratter Studios." },
       { property: "og:url", content: "/our-games" },
     ],
@@ -40,7 +40,7 @@ function OurGamesPage() {
           Our <em className="text-primary">Games</em>
         </h1>
         <p className="enter mt-8 text-lg leading-relaxed text-foreground/70" style={delay(420)}>
-          Each title is a quiet act of historical fiction — hand-crafted, researched, and shaped by
+          Each title is a quiet act of historical fiction - hand-crafted, researched, and shaped by
           the archives that inspired it.
         </p>
       </section>
@@ -71,7 +71,7 @@ function OurGamesPage() {
                 A narrative noir for PC
               </p>
               <p className="mt-6 leading-relaxed text-foreground/70">
-                A cinematic narrative experience drawn from the silence of the archives — candlelit
+                A cinematic narrative experience drawn from the silence of the archives - candlelit
                 streets, court intrigue, and a maid's errand that will decide a lady's fate.
               </p>
               <p className="mt-auto inline-flex items-center gap-2.5 pt-10 text-sm italic text-foreground/60 transition-colors duration-300 group-hover:text-primary">

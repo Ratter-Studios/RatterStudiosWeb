@@ -76,7 +76,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Ratter Studios" },
       {
         name: "description",
-        content: "Independent gaming studio crafting Stockholm 1646 — a noir narrative game.",
+        content: "Independent gaming studio crafting Stockholm 1646 - a noir narrative game.",
       },
       { name: "author", content: "Ratter Studios" },
       { property: "og:site_name", content: "Ratter Studios" },

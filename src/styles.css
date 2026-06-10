@@ -69,7 +69,7 @@
 
 :root {
   --radius: 0.25rem;
-  /* Ratter Studios — noir charcoal & amber gold ("the archive at candlelight") */
+  /* Ratter Studios - noir charcoal & amber gold ("the archive at candlelight") */
   --background: oklch(0.135 0.016 55);
   --foreground: oklch(0.92 0.022 80);
   --card: oklch(0.165 0.018 55);
@@ -84,7 +84,7 @@
   --secondary-foreground: oklch(0.92 0.022 80);
   --muted: oklch(0.19 0.018 55);
   --muted-foreground: oklch(0.67 0.028 80);
-  /* Warm bronze surface — hover states, quiet emphasis */
+  /* Warm bronze surface - hover states, quiet emphasis */
   --accent: oklch(0.23 0.03 70);
   --accent-foreground: oklch(0.9 0.06 85);
   --destructive: oklch(0.6 0.22 27);
@@ -164,7 +164,7 @@
 }
 
 @layer utilities {
-  /* ————— Film grain (applied once on the layout root) ————— */
+  /* ----- Film grain (applied once on the layout root) ----- */
   .grain::after {
     content: "";
     position: fixed;
@@ -177,7 +177,7 @@
     background-size: 160px 160px;
   }
 
-  /* ————— Entrance animation (CSS-only, SSR-safe, plays on load) ————— */
+  /* ----- Entrance animation (CSS-only, SSR-safe, plays on load) ----- */
   @keyframes enter-up {
     from {
       opacity: 0;
@@ -193,7 +193,7 @@
     animation-delay: var(--enter-delay, 0ms);
   }
 
-  /* ————— Scroll reveal (driven by the <Reveal> component) ————— */
+  /* ----- Scroll reveal (driven by the <Reveal> component) ----- */
   [data-reveal] {
     opacity: 0;
     transform: translateY(26px);
@@ -207,7 +207,7 @@
     transform: none;
   }
 
-  /* ————— Header nav links: gold underline draws in from the left ————— */
+  /* ----- Header nav links: gold underline draws in from the left ----- */
   .nav-link {
     position: relative;
     padding: 0.5rem 1rem;
@@ -241,7 +241,7 @@
     transform: scaleX(1);
   }
 
-  /* ————— Buttons: gold fill sweeps up from below ————— */
+  /* ----- Buttons: gold fill sweeps up from below ----- */
   .btn-sweep {
     position: relative;
     isolation: isolate;
@@ -267,7 +267,7 @@
     transform: translateY(0);
   }
 
-  /* ————— Slow cinematic zoom for hero imagery ————— */
+  /* ----- Slow cinematic zoom for hero imagery ----- */
   @keyframes ken-burns {
     from {
       transform: scale(1.04);
@@ -282,7 +282,7 @@
     will-change: transform;
   }
 
-  /* ————— Candlelight flicker ————— */
+  /* ----- Candlelight flicker ----- */
   @keyframes flicker {
     0%,
     100% {
@@ -302,7 +302,7 @@
     animation: flicker 7s ease-in-out infinite;
   }
 
-  /* ————— Hero scroll hint line ————— */
+  /* ----- Hero scroll hint line ----- */
   @keyframes scroll-line {
     0% {
       transform: scaleY(0);
@@ -325,7 +325,7 @@
     animation: scroll-line 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
 
-  /* ————— Gold hairline rule ————— */
+  /* ----- Gold hairline rule ----- */
   .rule-gold {
     height: 1px;
     background: linear-gradient(

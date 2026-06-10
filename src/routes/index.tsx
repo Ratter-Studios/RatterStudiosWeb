@@ -1,12 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { CSSProperties } from "react";
-import { format } from "date-fns";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { CtaLink, ArrowLink } from "@/components/cta-link";
 import { InnerCircleForm } from "@/components/inner-circle-form";
-import { news } from "@/lib/news";
 import keyart from "@/assets/stockholm-keyart.jpg";
 import shot1 from "@/assets/stockholm-shot-1.jpg";
 import shot2 from "@/assets/stockholm-shot-2.jpg";
@@ -15,13 +13,13 @@ import shot3 from "@/assets/stockholm-shot-3.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ratter Studios — Independent Games" },
+      { title: "Ratter Studios - Independent Games" },
       {
         name: "description",
         content:
           "Ratter Studios is an independent gaming studio. Makers of Stockholm 1646, a noir narrative game set in 17th-century Sweden.",
       },
-      { property: "og:title", content: "Ratter Studios — Independent Games" },
+      { property: "og:title", content: "Ratter Studios - Independent Games" },
       {
         property: "og:description",
         content: "Independent gaming studio. Makers of Stockholm 1646.",
@@ -36,11 +34,9 @@ export const Route = createFileRoute("/")({
 const delay = (ms: number) => ({ "--enter-delay": `${ms}ms` }) as CSSProperties;
 
 function Index() {
-  const latest = [...news].reverse().slice(0, 3);
-
   return (
     <SiteLayout>
-      {/* ——— Hero ——— */}
+      {/* --- Hero --- */}
       <section className="relative flex min-h-svh items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
@@ -110,7 +106,7 @@ function Index() {
         </div>
       </section>
 
-      {/* ——— Featured game ——— */}
+      {/* --- Featured game --- */}
       <section className="relative overflow-hidden border-t border-border/40 py-28 md:py-36">
         <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 md:grid-cols-[1.05fr_1fr] md:px-8">
           <Reveal>
@@ -143,7 +139,7 @@ function Index() {
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={shot1}
-                    alt="Järntorget — concept art of a candlelit Stockholm street"
+                    alt="Järntorget - concept art of a candlelit Stockholm street"
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
                   />
@@ -158,7 +154,7 @@ function Index() {
                   <div className="aspect-square overflow-hidden">
                     <img
                       src={src}
-                      alt={`Järntorget — atmosphere study ${i + 2}`}
+                      alt={`Järntorget - atmosphere study ${i + 2}`}
                       loading="lazy"
                       className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
                     />
@@ -170,7 +166,7 @@ function Index() {
         </div>
       </section>
 
-      {/* ——— Studio ——— */}
+      {/* --- Studio --- */}
       <section className="border-y border-border/40 bg-card/25 py-28 md:py-32">
         <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 md:grid-cols-2 md:px-8">
           <Reveal>
@@ -184,7 +180,7 @@ function Index() {
           <Reveal delay={150}>
             <p className="leading-[1.85] text-foreground/70">
               Ratter Studios was founded by a small team of writers, historians, and game-makers who
-              couldn't shake the feeling that the most extraordinary stories were already written —
+              couldn't shake the feeling that the most extraordinary stories were already written -
               buried in court ledgers, parish books, and the quiet margins of the archive.
             </p>
             <div className="mt-8">
@@ -194,58 +190,7 @@ function Index() {
         </div>
       </section>
 
-      {/* ——— Dispatches ——— */}
-      <section className="py-28 md:py-32">
-        <div className="mx-auto max-w-6xl px-6 md:px-8">
-          <Reveal>
-            <div className="flex flex-wrap items-end justify-between gap-6">
-              <SectionHeading
-                eyebrow="Dispatches"
-                title={
-                  <>
-                    From the <em className="text-primary">workshop</em>
-                  </>
-                }
-              />
-              <ArrowLink to="/news" className="mb-2">
-                All updates
-              </ArrowLink>
-            </div>
-          </Reveal>
-
-          <div className="mt-14 border-t border-border/50">
-            {latest.map((post, i) => (
-              <Reveal key={post.slug} delay={i * 100}>
-                <Link
-                  to="/news"
-                  className="group grid items-baseline gap-2 border-b border-border/50 py-7 transition-colors duration-300 hover:bg-card/40 md:grid-cols-[8rem_1fr_auto] md:gap-8 md:px-4"
-                >
-                  <time
-                    dateTime={post.date}
-                    className="text-xs italic tracking-[0.04em] text-foreground/40"
-                  >
-                    {format(new Date(post.date), "MMM d, yyyy")}
-                  </time>
-                  <h3 className="font-display text-2xl font-medium text-foreground transition-colors duration-300 group-hover:text-primary">
-                    {post.title}
-                  </h3>
-                  <span className="flex items-center gap-3 text-sm italic text-primary/60">
-                    {post.tag}
-                    <span
-                      aria-hidden
-                      className="inline-block not-italic transition-transform duration-300 group-hover:translate-x-1.5"
-                    >
-                      →
-                    </span>
-                  </span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ——— Join ——— */}
+      {/* --- Join --- */}
       <section className="relative overflow-hidden py-28 md:py-36">
         <div aria-hidden className="rule-gold absolute inset-x-0 top-0" />
         <div

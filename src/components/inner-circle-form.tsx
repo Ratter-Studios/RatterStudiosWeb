@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 
 /**
- * Newsletter signup — editorial underline input + gold sweep button.
+ * Newsletter signup - editorial underline input + gold sweep button.
  * No backend yet: submitting simply acknowledges locally.
  */
 export function InnerCircleForm() {
