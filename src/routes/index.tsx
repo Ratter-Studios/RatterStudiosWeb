@@ -138,7 +138,7 @@ function Index() {
             <div className="grid grid-cols-2 gap-3">
               <Link
                 to="/games"
-                className="card-line group relative col-span-2 block overflow-hidden border border-border/50"
+                className="group relative col-span-2 block overflow-hidden border border-border/50"
               >
                 <div className="aspect-video overflow-hidden">
                   <img
@@ -153,7 +153,7 @@ function Index() {
                 <Link
                   key={i}
                   to="/games"
-                  className="card-line group relative block overflow-hidden border border-border/50"
+                  className="group relative block overflow-hidden border border-border/50"
                 >
                   <div className="aspect-square overflow-hidden">
                     <img

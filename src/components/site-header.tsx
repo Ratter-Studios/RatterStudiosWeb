@@ -27,16 +27,24 @@ export function SiteHeader() {
     };
   }, [open]);
 
+  // Larger at the very top of the page; condenses once scrolled (when the
+  // background fades in). All sizes share the page's easing so they move as one.
+  const ease = "ease-[cubic-bezier(0.22,1,0.36,1)]";
+
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${ease} ${
           scrolled && !open
             ? "border-b border-border/60 bg-background/85 backdrop-blur-md"
             : "border-b border-transparent bg-transparent"
         }`}
       >
-        <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-6 md:px-8">
+        <div
+          className={`mx-auto flex max-w-6xl items-center justify-between px-6 transition-all duration-500 ${ease} md:px-8 ${
+            scrolled ? "h-20" : "h-28"
+          }`}
+        >
           <Link
             to="/"
             onClick={() => setOpen(false)}
@@ -46,7 +54,9 @@ export function SiteHeader() {
             <img
               src={wordmark}
               alt="Ratter Studios"
-              className="h-11 w-auto object-contain transition-opacity duration-300 group-hover:opacity-80"
+              className={`w-auto object-contain transition-all duration-500 ${ease} group-hover:opacity-80 ${
+                scrolled ? "h-11" : "h-16"
+              }`}
             />
           </Link>
 
@@ -55,8 +65,10 @@ export function SiteHeader() {
               <Link
                 key={item.to}
                 to={item.to}
-                className="nav-link text-sm tracking-[0.04em]"
-                activeProps={{ className: "nav-link is-active text-sm tracking-[0.04em]" }}
+                className={`nav-link tracking-[0.04em] ${scrolled ? "text-sm" : "text-base"}`}
+                activeProps={{
+                  className: `nav-link is-active tracking-[0.04em] ${scrolled ? "text-sm" : "text-base"}`,
+                }}
                 activeOptions={{ exact: item.to === "/" }}
               >
                 {item.label}

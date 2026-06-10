@@ -212,7 +212,9 @@
     position: relative;
     padding: 0.5rem 1rem;
     color: var(--muted-foreground);
-    transition: color 0.35s ease;
+    transition:
+      color 0.35s ease,
+      font-size 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .nav-link::after {
     content: "";
@@ -263,27 +265,6 @@
   }
   .btn-sweep:hover::before {
     transform: translateY(0);
-  }
-
-  /* ————— Cards: gold hairline draws across the top on hover ————— */
-  .card-line {
-    position: relative;
-  }
-  .card-line::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    z-index: 10;
-    background: var(--gradient-gold);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .card-line:hover::before {
-    transform: scaleX(1);
   }
 
   /* ————— Slow cinematic zoom for hero imagery ————— */

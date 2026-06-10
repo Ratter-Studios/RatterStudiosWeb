@@ -118,7 +118,7 @@ function GamesPage() {
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {shots.map((src, i) => (
             <Reveal key={i} delay={i * 120}>
-              <div className="card-line group aspect-[4/5] overflow-hidden border border-border/50 bg-card">
+              <div className="group aspect-[4/5] overflow-hidden border border-border/50 bg-card">
                 <img
                   src={src}
                   alt={`Järntorget concept art ${i + 1}`}

@@ -49,7 +49,7 @@ function OurGamesPage() {
         <Reveal>
           <Link
             to="/games"
-            className="card-line group relative grid overflow-hidden border border-border/50 bg-card transition-colors duration-500 hover:border-primary/40 md:grid-cols-[5fr_4fr]"
+            className="group relative grid overflow-hidden border border-border/50 bg-card transition-colors duration-500 hover:border-primary/40 md:grid-cols-[5fr_4fr]"
           >
             <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[28rem]">
               <img
