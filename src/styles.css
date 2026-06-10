@@ -1,0 +1,374 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+/*
+ * Design system definition.
+ *
+ * The @theme inline block maps CSS custom properties to Tailwind utility
+ * classes (e.g. --color-primary -> bg-primary, text-primary).
+ *
+ * The :root block defines the actual color values using oklch.
+ * All colors MUST use oklch format.
+ *
+ * To add a new semantic color:
+ * 1. Add the variable to :root
+ * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.25rem;
+  /* Ratter Studios — noir charcoal & amber gold ("the archive at candlelight") */
+  --background: oklch(0.135 0.016 55);
+  --foreground: oklch(0.92 0.022 80);
+  --card: oklch(0.165 0.018 55);
+  --card-foreground: oklch(0.92 0.022 80);
+  --popover: oklch(0.165 0.018 55);
+  --popover-foreground: oklch(0.92 0.022 80);
+  /* Amber gold #DCA642 */
+  --primary: oklch(0.745 0.135 78);
+  --primary-foreground: oklch(0.14 0.018 55);
+  --primary-glow: oklch(0.85 0.13 84);
+  --secondary: oklch(0.2 0.02 55);
+  --secondary-foreground: oklch(0.92 0.022 80);
+  --muted: oklch(0.19 0.018 55);
+  --muted-foreground: oklch(0.67 0.028 80);
+  /* Warm bronze surface — hover states, quiet emphasis */
+  --accent: oklch(0.23 0.03 70);
+  --accent-foreground: oklch(0.9 0.06 85);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.98 0.003 85);
+  --border: oklch(0.34 0.025 80 / 40%);
+  --input: oklch(0.34 0.025 80 / 40%);
+  --ring: oklch(0.745 0.135 78);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.165 0.018 55);
+  --sidebar-foreground: oklch(0.92 0.022 80);
+  --sidebar-primary: oklch(0.745 0.135 78);
+  --sidebar-primary-foreground: oklch(0.14 0.018 55);
+  --sidebar-accent: oklch(0.23 0.03 70);
+  --sidebar-accent-foreground: oklch(0.92 0.022 80);
+  --sidebar-border: oklch(0.34 0.025 80 / 40%);
+  --sidebar-ring: oklch(0.745 0.135 78);
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Times New Roman", serif;
+  --font-sans: "Lora", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+  --gradient-gold: linear-gradient(135deg, var(--primary), var(--primary-glow));
+  --shadow-gold: 0 10px 40px -10px color-mix(in oklab, var(--primary) 40%, transparent);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: 0.005em;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 30%, transparent);
+    color: var(--foreground);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.3 0.02 70);
+    border: 2px solid var(--background);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--primary) 55%, var(--background));
+  }
+
+  :focus-visible {
+    outline: 1px solid color-mix(in oklab, var(--primary) 80%, transparent);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  /* ————— Film grain (applied once on the layout root) ————— */
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    pointer-events: none;
+    opacity: 0.07;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='160'%20height='160'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.8'%20numOctaves='2'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3C/filter%3E%3Crect%20width='160'%20height='160'%20filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+  }
+
+  /* ————— Entrance animation (CSS-only, SSR-safe, plays on load) ————— */
+  @keyframes enter-up {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .enter {
+    animation: enter-up 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--enter-delay, 0ms);
+  }
+
+  /* ————— Scroll reveal (driven by the <Reveal> component) ————— */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ————— Header nav links: gold underline draws in from the left ————— */
+  .nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    color: var(--muted-foreground);
+    transition: color 0.35s ease;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0.15rem;
+    height: 1px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nav-link:hover {
+    color: var(--foreground);
+  }
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+  .nav-link.is-active {
+    color: var(--primary);
+  }
+  .nav-link.is-active::after {
+    transform: scaleX(1);
+  }
+
+  /* ————— Buttons: gold fill sweeps up from below ————— */
+  .btn-sweep {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    transition:
+      color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .btn-sweep::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--gradient-gold);
+    transform: translateY(101%);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .btn-sweep:hover {
+    color: var(--primary-foreground);
+    border-color: transparent;
+  }
+  .btn-sweep:hover::before {
+    transform: translateY(0);
+  }
+
+  /* ————— Cards: gold hairline draws across the top on hover ————— */
+  .card-line {
+    position: relative;
+  }
+  .card-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    z-index: 10;
+    background: var(--gradient-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .card-line:hover::before {
+    transform: scaleX(1);
+  }
+
+  /* ————— Slow cinematic zoom for hero imagery ————— */
+  @keyframes ken-burns {
+    from {
+      transform: scale(1.04);
+    }
+    to {
+      transform: scale(1.16);
+    }
+  }
+  .ken-burns {
+    animation: ken-burns 36s ease-in-out infinite alternate;
+    transform-origin: 50% 35%;
+    will-change: transform;
+  }
+
+  /* ————— Candlelight flicker ————— */
+  @keyframes flicker {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    42% {
+      opacity: 0.7;
+    }
+    65% {
+      opacity: 0.48;
+    }
+    82% {
+      opacity: 0.62;
+    }
+  }
+  .flicker {
+    animation: flicker 7s ease-in-out infinite;
+  }
+
+  /* ————— Hero scroll hint line ————— */
+  @keyframes scroll-line {
+    0% {
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    45% {
+      transform: scaleY(1);
+      transform-origin: top;
+    }
+    55% {
+      transform: scaleY(1);
+      transform-origin: bottom;
+    }
+    100% {
+      transform: scaleY(0);
+      transform-origin: bottom;
+    }
+  }
+  .scroll-hint {
+    animation: scroll-line 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+
+  /* ————— Gold hairline rule ————— */
+  .rule-gold {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--primary) 55%, transparent),
+      transparent
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .enter,
+  .ken-burns,
+  .flicker,
+  .scroll-hint {
+    animation: none !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
