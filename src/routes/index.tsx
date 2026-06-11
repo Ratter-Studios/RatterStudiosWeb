@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { CSSProperties } from "react";
+import { ArrowDown } from "lucide-react";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
@@ -95,14 +96,11 @@ function Index() {
 
         {/* Scroll hint */}
         <div
-          className="enter absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3"
+          aria-hidden
+          className="enter absolute bottom-8 left-1/2 -translate-x-1/2"
           style={delay(1100)}
         >
-          <span className="text-xs italic tracking-[0.2em] text-foreground/35">Scroll</span>
-          <span
-            aria-hidden
-            className="scroll-hint block h-12 w-px bg-gradient-to-b from-primary/70 to-transparent"
-          />
+          <ArrowDown className="scroll-arrow h-6 w-6 text-primary" strokeWidth={1.75} />
         </div>
       </section>
 

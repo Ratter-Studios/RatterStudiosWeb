@@ -302,27 +302,18 @@
     animation: flicker 7s ease-in-out infinite;
   }
 
-  /* ----- Hero scroll hint line ----- */
-  @keyframes scroll-line {
-    0% {
-      transform: scaleY(0);
-      transform-origin: top;
-    }
-    45% {
-      transform: scaleY(1);
-      transform-origin: top;
-    }
-    55% {
-      transform: scaleY(1);
-      transform-origin: bottom;
-    }
+  /* ----- Hero scroll-down arrow (gentle bob) ----- */
+  @keyframes nudge {
+    0%,
     100% {
-      transform: scaleY(0);
-      transform-origin: bottom;
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(6px);
     }
   }
-  .scroll-hint {
-    animation: scroll-line 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  .scroll-arrow {
+    animation: nudge 2.4s ease-in-out infinite;
   }
 
   /* ----- Gold hairline rule ----- */
@@ -344,7 +335,7 @@
   .enter,
   .ken-burns,
   .flicker,
-  .scroll-hint {
+  .scroll-arrow {
     animation: none !important;
   }
   [data-reveal] {
