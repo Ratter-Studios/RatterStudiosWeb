@@ -164,9 +164,9 @@ function Index() {
         </div>
       </section>
 
-      {/* --- Studio --- */}
-      <section className="border-y border-border/40 bg-card/25 py-28 md:py-32">
-        <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 md:grid-cols-2 md:px-8">
+      {/* --- Studio principle + Inner Circle signup --- */}
+      <section className="border-t border-border/40 bg-card/25 pt-28 pb-20 md:pt-32">
+        <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 md:grid-cols-2 md:gap-16 md:px-8">
           <Reveal>
             <blockquote className="font-display text-4xl font-medium italic leading-[1.15] text-primary md:text-5xl">
               "We make history playable."
@@ -174,9 +174,7 @@ function Index() {
             <p className="mt-6 text-xs italic tracking-[0.1em] text-foreground/40">
               The studio principle
             </p>
-          </Reveal>
-          <Reveal delay={150}>
-            <p className="leading-[1.85] text-foreground/70">
+            <p className="mt-8 leading-[1.85] text-foreground/70">
               Ratter Studios was founded by a small team of writers, historians, and game-makers who
               couldn't shake the feeling that the most extraordinary stories were already written -
               buried in court ledgers, parish books, and the quiet margins of the archive.
@@ -185,32 +183,14 @@ function Index() {
               <ArrowLink to="/about">Our story</ArrowLink>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* --- Join --- */}
-      <section className="relative overflow-hidden py-28 md:py-36">
-        <div aria-hidden className="rule-gold absolute inset-x-0 top-0" />
-        <div
-          aria-hidden
-          className="flicker pointer-events-none absolute left-1/2 top-1/2 h-[50vh] w-[80vh] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
-          style={{
-            background:
-              "radial-gradient(ellipse, color-mix(in oklab, var(--primary) 14%, transparent) 0%, transparent 70%)",
-          }}
-        />
-        <div className="relative mx-auto max-w-2xl px-6 text-center md:px-8">
-          <Reveal>
-            <p className="text-[0.75rem] uppercase tracking-[0.4em] text-primary/70">
-              The Inner Circle
-            </p>
-            <h2 className="mt-6 font-display text-4xl font-medium leading-[1.05] md:text-5xl">
+          <Reveal delay={150}>
+            <h2 className="font-display text-3xl font-medium leading-[1.05] md:text-4xl">
               Walk with us <em className="text-primary">through 1646.</em>
             </h2>
-            <p className="mx-auto mt-6 max-w-md leading-relaxed text-foreground/65">
+            <p className="mt-5 max-w-md leading-relaxed text-foreground/65">
               Research finds, early trailers, and first notice when the playtests open.
             </p>
-            <div className="mt-10">
+            <div className="mt-8 max-w-md">
               <InnerCircleForm />
             </div>
           </Reveal>

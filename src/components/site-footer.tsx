@@ -10,9 +10,9 @@ const explore = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative mt-32 border-t border-border/40">
+    <footer className="relative border-t border-border/40">
       <div aria-hidden className="rule-gold absolute inset-x-0 -top-px" />
-      <div className="mx-auto max-w-6xl px-6 py-16 md:px-8 md:py-20">
+      <div className="mx-auto max-w-6xl px-6 py-12 md:px-8 md:py-14">
         <div className="flex flex-col gap-14 md:flex-row md:items-start md:justify-between">
           <div className="max-w-xs">
             <img src={wordmark} alt="Ratter Studios" className="h-9 w-auto object-contain" />
@@ -79,7 +79,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-3 border-t border-border/40 pt-8 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border/40 pt-6 sm:flex-row">
           <p className="text-xs tracking-[0.05em] text-foreground/35">
             © {new Date().getFullYear()} Ratter Studios
           </p>
