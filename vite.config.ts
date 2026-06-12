@@ -10,11 +10,20 @@ import tailwindcss from "@tailwindcss/vite";
 //   - start.ts    - global start instance / request middleware
 //   - server.ts   - custom server entry (our SSR error wrapper)
 export default defineConfig({
+  // Sub-path the site is served from. "/" for local dev (so `bun run dev` is
+  // unaffected); the GitHub Pages deploy workflow sets VITE_BASE_PATH to
+  // "/RatterStudiosWeb/" for the production build.
+  base: process.env.VITE_BASE_PATH || "/",
   plugins: [
     // Resolves the "@/*" path alias from tsconfig.json.
     tsConfigPaths(),
     tailwindcss(),
-    tanstackStart(),
+    tanstackStart({
+      // Pre-render every route to static HTML at build time, so the site can be
+      // served by a static host (GitHub Pages). crawlLinks follows <a> tags from
+      // the home page to discover all routes automatically.
+      prerender: { enabled: true, crawlLinks: true },
+    }),
     viteReact(),
   ],
 });

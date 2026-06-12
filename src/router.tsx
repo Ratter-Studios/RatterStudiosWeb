@@ -10,6 +10,10 @@ export const getRouter = () => {
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
+    // Serve correctly from a sub-path (e.g. GitHub Pages: /RatterStudiosWeb/).
+    // BASE_URL is "/" in dev and whatever `vite build --base=...` sets in prod,
+    // so local development is unaffected.
+    basepath: import.meta.env.BASE_URL,
   });
 
   return router;

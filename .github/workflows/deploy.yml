@@ -1,0 +1,62 @@
+name: Deploy to GitHub Pages
+
+# Builds the TanStack Start site to static files and publishes them to GitHub
+# Pages. Runs on every push to main, or manually from the Actions tab.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Permissions the deploy needs (GitHub's recommended Pages setup).
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only let one deploy run at a time; newer pushes cancel older in-progress runs.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build (pre-rendered static site)
+        env:
+          # The site is served from https://<user>.github.io/RatterStudiosWeb/,
+          # so it must be built under that sub-path. If you ever rename the repo,
+          # change this to match the new name.
+          VITE_BASE_PATH: /RatterStudiosWeb/
+        run: bun run build
+
+      - name: Add 404 fallback and disable Jekyll
+        run: |
+          cp dist/client/index.html dist/client/404.html
+          touch dist/client/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # TanStack Start writes the static client + pre-rendered HTML here.
+          path: dist/client
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
