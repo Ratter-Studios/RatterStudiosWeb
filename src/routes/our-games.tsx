@@ -27,12 +27,6 @@ function OurGamesPage() {
   return (
     <SiteLayout>
       <section className="mx-auto max-w-3xl px-6 pb-16 pt-44 text-center md:px-8">
-        <p
-          className="enter text-[0.75rem] uppercase tracking-[0.5em] text-primary/70"
-          style={delay(100)}
-        >
-          The Catalog
-        </p>
         <h1
           className="enter mt-8 font-display text-5xl font-medium leading-[1.02] md:text-7xl"
           style={delay(250)}
