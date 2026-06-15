@@ -1,10 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import wordmark from "@/assets/ratter-wordmark.png";
+import { DevLoginDialog } from "@/components/dev-login-dialog";
 
 const explore = [
   { to: "/", label: "Home" },
   { to: "/our-games", label: "Our Games" },
   { to: "/about", label: "Our Story" },
+  { to: "/blog", label: "Dev Blog" },
   { to: "/news", label: "Community" },
 ] as const;
 
@@ -19,6 +21,7 @@ export function SiteFooter() {
             <p className="mt-6 font-display text-lg italic leading-snug text-foreground/50">
               Turning forgotten archives into cinematic, living worlds.
             </p>
+            <DevLoginDialog />
           </div>
 
           <div className="grid grid-cols-2 gap-12 sm:gap-20">

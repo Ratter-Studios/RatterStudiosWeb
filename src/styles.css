@@ -326,6 +326,96 @@
       transparent
     );
   }
+
+  /* ----- Rendered markdown (dev blog posts) ----- */
+  .blog-content {
+    color: color-mix(in oklab, var(--foreground) 82%, transparent);
+    font-size: 1.075rem;
+    line-height: 1.8;
+  }
+  .blog-content > * + * {
+    margin-top: 1.4em;
+  }
+  .blog-content h2,
+  .blog-content h3,
+  .blog-content h4 {
+    font-family: var(--font-display);
+    color: var(--foreground);
+    line-height: 1.2;
+  }
+  .blog-content h2 {
+    margin-top: 2.2em;
+    font-size: 1.9rem;
+  }
+  .blog-content h3 {
+    margin-top: 1.8em;
+    font-size: 1.45rem;
+  }
+  .blog-content a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: color-mix(in oklab, var(--primary) 45%, transparent);
+    transition: text-decoration-color 0.3s ease;
+  }
+  .blog-content a:hover {
+    text-decoration-color: var(--primary);
+  }
+  .blog-content strong {
+    color: var(--foreground);
+    font-weight: 600;
+  }
+  .blog-content ul,
+  .blog-content ol {
+    padding-left: 1.4em;
+  }
+  .blog-content ul {
+    list-style: disc;
+  }
+  .blog-content ol {
+    list-style: decimal;
+  }
+  .blog-content li + li {
+    margin-top: 0.5em;
+  }
+  .blog-content li::marker {
+    color: color-mix(in oklab, var(--primary) 70%, transparent);
+  }
+  .blog-content blockquote {
+    border-left: 2px solid color-mix(in oklab, var(--primary) 55%, transparent);
+    padding-left: 1.25rem;
+    font-style: italic;
+    color: color-mix(in oklab, var(--foreground) 70%, transparent);
+  }
+  .blog-content img {
+    width: 100%;
+    border: 1px solid var(--border);
+  }
+  .blog-content code {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    background: color-mix(in oklab, var(--foreground) 8%, transparent);
+    padding: 0.15em 0.4em;
+    border-radius: 3px;
+  }
+  .blog-content pre {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    overflow-x: auto;
+  }
+  .blog-content pre code {
+    background: none;
+    padding: 0;
+  }
+  .blog-content hr {
+    border: 0;
+    height: 1px;
+    background: var(--border);
+    margin: 2.5em 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

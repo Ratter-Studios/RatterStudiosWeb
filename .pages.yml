@@ -1,0 +1,53 @@
+# Pages CMS configuration — https://pagescms.org/docs
+#
+# Editors: open https://app.pagescms.org, sign in with GitHub, and select the
+# Ratter-Studios/RatterStudiosWeb repository. Only GitHub users with access to
+# this repo (Ratter-Studios org members) can open or save content here.
+#
+# Saving a post commits a Markdown file to src/content/blog and pushes to `main`,
+# which triggers the GitHub Pages deploy. The post is live once the build finishes.
+
+media:
+  input: public/blog # where uploaded images are committed in the repo
+  output: /blog # URL path the site references them by (deploy base is added at render)
+  extensions: [jpg, jpeg, png, webp, gif, svg]
+
+content:
+  - name: blog
+    label: Dev Blog
+    type: collection
+    path: src/content/blog
+    format: yaml-frontmatter
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      primary: title
+      fields: [title, date, author]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: author
+        label: Author
+        type: string
+        required: true
+      - name: excerpt
+        label: Excerpt
+        type: text
+        description: A short summary shown on the blog index (1–2 sentences).
+      - name: cover
+        label: Cover image
+        type: image
+        description: Optional. Shown at the top of the post.
+      - name: body
+        label: Body
+        type: rich-text
+        description: The post itself. Written and stored as Markdown.
