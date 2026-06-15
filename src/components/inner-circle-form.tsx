@@ -37,7 +37,7 @@ export function InnerCircleForm() {
         />
         <button
           type="submit"
-          className="btn-sweep shrink-0 border border-primary/50 px-7 py-2.5 text-sm tracking-[0.05em] text-primary"
+          className="btn-ratter shrink-0 rounded-[3px] px-7 py-2.5 text-sm tracking-[0.05em]"
         >
           Join
         </button>

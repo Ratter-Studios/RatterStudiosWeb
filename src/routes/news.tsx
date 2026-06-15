@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { InnerCircleForm } from "@/components/inner-circle-form";
+import { PillLink } from "@/components/cta-link";
 
 export const Route = createFileRoute("/news")({
   head: () => ({
@@ -64,20 +65,9 @@ function CommunityPage() {
                 Long-form research threads, early playtests, and direct conversation with the team.
                 The closest seat to the workbench.
               </p>
-              <a
-                href="https://discord.gg"
-                target="_blank"
-                rel="noreferrer"
-                className="group/link mt-8 inline-flex items-center gap-2.5 text-sm italic text-foreground/60 transition-colors duration-300 hover:text-primary"
-              >
+              <PillLink href="https://discord.gg" className="mt-8">
                 Join the server
-                <span
-                  aria-hidden
-                  className="inline-block not-italic transition-transform duration-300 group-hover/link:translate-x-1.5"
-                >
-                  →
-                </span>
-              </a>
+              </PillLink>
               <div className="mt-8 overflow-hidden border border-border/40 bg-background/40 p-3">
                 <iframe
                   src="https://discord.com/widget?id=1511691078527352922&theme=dark"
@@ -107,15 +97,9 @@ function CommunityPage() {
                 Short dispatches from the archive - strange entries, surprising characters, the
                 day-to-day of building a 17th-century city in pixels.
               </p>
-              <p className="mt-8 inline-flex items-center gap-2.5 text-sm italic text-foreground/60 transition-colors duration-300 group-hover:text-primary">
+              <span className="btn-ratter mt-8 self-start rounded-full px-5 py-2 text-xs tracking-[0.06em] group-hover:border-primary">
                 Follow on TikTok
-                <span
-                  aria-hidden
-                  className="inline-block not-italic transition-transform duration-300 group-hover:translate-x-1.5"
-                >
-                  →
-                </span>
-              </p>
+              </span>
             </a>
           </Reveal>
         </div>

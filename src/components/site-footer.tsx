@@ -15,13 +15,15 @@ export function SiteFooter() {
     <footer className="relative border-t border-border/40">
       <div aria-hidden className="rule-gold absolute inset-x-0 -top-px" />
       <div className="mx-auto max-w-6xl px-6 py-12 md:px-8 md:py-14">
-        <div className="flex flex-col gap-14 md:flex-row md:items-start md:justify-between">
-          <div className="max-w-xs">
+        <div className="flex flex-col gap-14 md:flex-row md:items-stretch md:justify-between">
+          <div className="flex max-w-xs flex-col">
             <img src={wordmark} alt="Ratter Studios" className="h-9 w-auto object-contain" />
             <p className="mt-6 font-display text-lg italic leading-snug text-foreground/50">
               Turning forgotten archives into cinematic, living worlds.
             </p>
-            <DevLoginDialog />
+            <div className="mt-10 md:mt-auto">
+              <DevLoginDialog />
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-12 sm:gap-20">

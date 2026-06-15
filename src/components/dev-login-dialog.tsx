@@ -23,10 +23,7 @@ export function DevLoginDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button
-          type="button"
-          className="mt-8 inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-foreground/40 transition-colors duration-300 hover:text-primary"
-        >
+        <button type="button" className="btn-ratter gap-1.5 rounded-[3px] px-4 py-2 text-xs tracking-[0.1em]">
           <Lock className="size-3" />
           Dev Login
         </button>
@@ -44,7 +41,7 @@ export function DevLoginDialog() {
           href={PAGES_CMS_URL}
           target="_blank"
           rel="noreferrer noopener"
-          className="btn-sweep mt-2 inline-flex w-full items-center justify-center gap-2.5 rounded-md border border-primary/40 px-4 py-2.5 text-sm font-medium text-foreground"
+          className="btn-ratter mt-2 w-full gap-2.5 rounded-[3px] px-4 py-2.5 text-sm font-medium"
         >
           <GithubMark className="size-4" />
           Continue with GitHub

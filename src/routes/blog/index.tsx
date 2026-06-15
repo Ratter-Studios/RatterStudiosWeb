@@ -74,14 +74,8 @@ function BlogIndex() {
                         {post.frontmatter.excerpt}
                       </p>
                     ) : null}
-                    <span className="mt-8 inline-flex items-center gap-2.5 text-sm italic text-foreground/60 transition-colors duration-300 group-hover:text-primary">
+                    <span className="btn-ratter mt-8 inline-flex self-start rounded-full px-5 py-2 text-xs tracking-[0.06em] group-hover:border-primary">
                       Read more
-                      <span
-                        aria-hidden
-                        className="inline-block not-italic transition-transform duration-300 group-hover:translate-x-1.5"
-                      >
-                        →
-                      </span>
                     </span>
                   </Link>
                 </Reveal>

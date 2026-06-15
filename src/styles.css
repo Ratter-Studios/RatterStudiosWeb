@@ -240,31 +240,17 @@
   .nav-link.is-active::after {
     transform: scaleX(1);
   }
-
-  /* ----- Buttons: gold fill sweeps up from below ----- */
-  .btn-sweep {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    transition:
-      color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-      border-color 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  
+  .btn-ratter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color-mix(in oklab, var(--primary) 35%, transparent);
+    color: var(--primary);
+    transition: border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .btn-sweep::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: var(--gradient-gold);
-    transform: translateY(101%);
-    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .btn-sweep:hover {
-    color: var(--primary-foreground);
-    border-color: transparent;
-  }
-  .btn-sweep:hover::before {
-    transform: translateY(0);
+  .btn-ratter:hover {
+    border-color: var(--primary);
   }
 
   /* ----- Slow cinematic zoom for hero imagery ----- */

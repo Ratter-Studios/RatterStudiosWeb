@@ -4,7 +4,7 @@ import { ArrowDown } from "lucide-react";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
-import { CtaLink, ArrowLink } from "@/components/cta-link";
+import { CtaLink, PillLink } from "@/components/cta-link";
 import { InnerCircleForm } from "@/components/inner-circle-form";
 import keyart from "@/assets/stockholm-keyart.jpg";
 import shot1 from "@/assets/stockholm-shot-1.jpg";
@@ -88,9 +88,7 @@ function Index() {
           </p>
           <div className="enter mt-12 flex flex-wrap justify-center gap-6" style={delay(720)}>
             <CtaLink to="/our-games">Our Games</CtaLink>
-            <ArrowLink to="/news" className="h-12">
-              Join the Inner Circle
-            </ArrowLink>
+            <CtaLink to="/news">Join the Community</CtaLink>
           </div>
         </div>
 
@@ -109,7 +107,6 @@ function Index() {
         <div className="mx-auto grid max-w-6xl items-center gap-16 px-6 md:grid-cols-[1.05fr_1fr] md:px-8">
           <Reveal>
             <SectionHeading
-              eyebrow="Featured · In Development"
               title={
                 <>
                   Stockholm 1646: <em className="text-primary">Järntorget</em>
@@ -124,7 +121,7 @@ function Index() {
               that will decide a court lady's fate. Every name, every ledger, every shadow is real.
             </p>
             <div className="mt-10">
-              <ArrowLink to="/games">Enter the city</ArrowLink>
+              <PillLink to="/games">Enter the city</PillLink>
             </div>
           </Reveal>
 
@@ -180,7 +177,7 @@ function Index() {
               buried in court ledgers, parish books, and the quiet margins of the archive.
             </p>
             <div className="mt-8">
-              <ArrowLink to="/about">Our story</ArrowLink>
+              <PillLink to="/about">Our story</PillLink>
             </div>
           </Reveal>
           <Reveal delay={150}>
