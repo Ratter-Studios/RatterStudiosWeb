@@ -19,7 +19,7 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-6 py-12 md:px-8 md:py-14">
         <div className="flex flex-col gap-14 md:flex-row md:items-stretch md:justify-between">
           <div className="flex max-w-xs flex-col">
-            <img src={wordmark} alt="Ratter Studios" className="h-9 w-auto object-contain" />
+            <img src={wordmark} alt="Ratter Studios" className="h-9 w-auto self-start object-contain" />
             <p className="mt-6 font-display text-lg italic leading-snug text-foreground/50">
               Turning forgotten archives into cinematic, living worlds.
             </p>

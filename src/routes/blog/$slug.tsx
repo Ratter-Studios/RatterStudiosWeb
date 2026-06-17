@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { getPost, formatDate, withBase, baseifyHtml } from "@/lib/blog";
 
@@ -31,20 +31,7 @@ function BlogPost() {
   return (
     <SiteLayout>
       <article className="mx-auto max-w-3xl px-6 pb-32 pt-36 md:px-8 md:pt-44">
-        <Link
-          to="/blog"
-          className="group inline-flex items-center gap-2 text-sm italic text-foreground/55 transition-colors duration-300 hover:text-primary"
-        >
-          <span
-            aria-hidden
-            className="inline-block not-italic transition-transform duration-300 group-hover:-translate-x-1"
-          >
-            ←
-          </span>
-          Dev Blog
-        </Link>
-
-        <header className="mt-8">
+        <header>
           <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/70">
             {formatDate(date)} · {author}
           </p>

@@ -61,7 +61,7 @@ function BlogIndex() {
                   <Link
                     to="/blog/$slug"
                     params={{ slug: post.slug }}
-                    className="group block border border-border/50 bg-card p-8 transition-colors duration-500 hover:border-primary/40 md:p-10"
+                    className="group block rounded-2xl border border-border/50 bg-card p-8 transition-colors duration-500 hover:border-primary/40 md:p-10"
                   >
                     <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/70">
                       {formatDate(post.frontmatter.date)} · {post.frontmatter.author}

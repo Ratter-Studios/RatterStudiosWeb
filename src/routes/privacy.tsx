@@ -24,7 +24,6 @@ function PrivacyPage() {
   return (
     <SiteLayout>
       <article className="mx-auto max-w-2xl px-6 pb-32 pt-44 md:px-8">
-        <p className="enter text-[0.75rem] uppercase tracking-[0.5em] text-primary/70">Legal</p>
         <h1 className="enter mt-8 font-display text-5xl font-medium leading-[1.02] md:text-6xl">
           Privacy <em className="text-primary">Policy</em>
         </h1>

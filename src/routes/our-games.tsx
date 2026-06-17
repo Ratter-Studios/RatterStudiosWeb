@@ -45,7 +45,7 @@ function OurGamesPage() {
         <Reveal>
           <Link
             to="/games"
-            className="group relative grid overflow-hidden border border-border/50 bg-card transition-colors duration-500 hover:border-primary/40 md:grid-cols-[5fr_4fr]"
+            className="group relative grid overflow-hidden rounded-2xl border border-border/50 bg-card transition-colors duration-500 hover:border-primary/40 md:grid-cols-[5fr_4fr]"
           >
             <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[28rem]">
               <img
@@ -78,7 +78,7 @@ function OurGamesPage() {
         </Reveal>
 
         <Reveal delay={150}>
-          <div className="mt-6 flex flex-col items-center justify-between gap-4 border border-border/40 bg-card/20 px-8 py-12 text-center md:flex-row md:text-left">
+          <div className="mt-6 flex flex-col items-center justify-between gap-4 rounded-2xl border border-border/40 bg-card/20 px-8 py-12 text-center md:flex-row md:text-left">
             <div>
               <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/50">
                 In the workshop

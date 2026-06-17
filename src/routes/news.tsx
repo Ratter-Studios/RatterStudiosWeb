@@ -56,7 +56,7 @@ function CommunityPage() {
       <section className="mx-auto max-w-5xl px-6 pb-32 md:px-8">
         <div className="grid items-start gap-6 md:grid-cols-2">
           <Reveal>
-            <div className="group relative border border-border/50 bg-card p-8 transition-colors duration-500 hover:border-primary/40 md:p-10">
+            <div className="group relative rounded-2xl border border-border/50 bg-card p-8 transition-colors duration-500 hover:border-primary/40 md:p-10">
               <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/70">Discord</p>
               <h2 className="mt-8 font-display text-3xl font-medium md:text-4xl">
                 The <em className="text-primary">conversation</em>
@@ -68,7 +68,7 @@ function CommunityPage() {
               <PillLink href="https://discord.gg" className="mt-8">
                 Join the server
               </PillLink>
-              <div className="mt-8 overflow-hidden border border-border/40 bg-background/40 p-3">
+              <div className="mt-8 overflow-hidden rounded-xl border border-border/40 bg-background/40 p-3">
                 <iframe
                   src="https://discord.com/widget?id=1511691078527352922&theme=dark"
                   width="100%"
@@ -87,7 +87,7 @@ function CommunityPage() {
               href="https://tiktok.com"
               target="_blank"
               rel="noreferrer"
-              className="group relative block border border-border/50 bg-card p-8 transition-colors duration-500 hover:border-primary/40 md:p-10"
+              className="group relative block rounded-2xl border border-border/50 bg-card p-8 transition-colors duration-500 hover:border-primary/40 md:p-10"
             >
               <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/70">TikTok</p>
               <h2 className="mt-8 font-display text-3xl font-medium md:text-4xl">

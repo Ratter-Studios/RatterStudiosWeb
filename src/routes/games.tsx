@@ -109,7 +109,6 @@ function GamesPage() {
       <section className="mx-auto max-w-7xl px-6 py-24 md:px-8 md:py-28">
         <Reveal>
           <SectionHeading
-            eyebrow="Glimpses"
             title={
               <>
                 Concept &amp; <em className="text-primary">atmosphere</em>
@@ -120,7 +119,7 @@ function GamesPage() {
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {shots.map((src, i) => (
             <Reveal key={i} delay={i * 120}>
-              <div className="group aspect-[4/5] overflow-hidden border border-border/50 bg-card">
+              <div className="group aspect-[4/5] overflow-hidden rounded-2xl border border-border/50 bg-card">
                 <img
                   src={src}
                   alt={`Järntorget concept art ${i + 1}`}
