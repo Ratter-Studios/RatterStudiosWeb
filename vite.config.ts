@@ -39,6 +39,7 @@ export default defineConfig({
   // unaffected); the GitHub Pages deploy workflow sets VITE_BASE_PATH to
   // "/RatterStudiosWeb/" for the production build.
   base: process.env.VITE_BASE_PATH || "/",
+  publicDir: "img",
   plugins: [
     // Resolves the "@/*" path alias from tsconfig.json.
     tsConfigPaths(),

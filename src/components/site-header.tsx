@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import wordmark from "@/assets/ratter-wordmark.png";
+import { websiteImg } from "@/lib/assets";
+
+const wordmark = websiteImg("ratter-wordmark.png");
 
 const nav = [
   { to: "/", label: "Home" },

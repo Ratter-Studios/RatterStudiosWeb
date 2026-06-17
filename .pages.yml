@@ -8,7 +8,7 @@
 # which triggers the GitHub Pages deploy. The post is live once the build finishes.
 
 media:
-  input: public/blog # where uploaded images are committed in the repo
+  input: img/blog # where uploaded images are committed in the repo
   output: /blog # URL path the site references them by (deploy base is added at render)
   extensions: [jpg, jpeg, png, webp, gif, svg]
 

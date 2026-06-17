@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import wordmark from "@/assets/ratter-wordmark.png";
+import { websiteImg } from "@/lib/assets";
+
+const wordmark = websiteImg("ratter-wordmark.png");
 import { DevLoginDialog } from "@/components/dev-login-dialog";
 
 const explore = [

@@ -2,7 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import type { CSSProperties } from "react";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
-import keyart from "@/assets/stockholm-keyart.jpg";
+import { websiteImg } from "@/lib/assets";
+
+const keyart = websiteImg("stockholm-keyart.jpg");
 
 export const Route = createFileRoute("/our-games")({
   head: () => ({

@@ -6,10 +6,12 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { CtaLink, PillLink } from "@/components/cta-link";
 import { InnerCircleForm } from "@/components/inner-circle-form";
-import keyart from "@/assets/stockholm-keyart.jpg";
-import shot1 from "@/assets/stockholm-shot-1.jpg";
-import shot2 from "@/assets/stockholm-shot-2.jpg";
-import shot3 from "@/assets/stockholm-shot-3.jpg";
+import { websiteImg } from "@/lib/assets";
+
+const keyart = websiteImg("stockholm-keyart.jpg");
+const shot1 = websiteImg("stockholm-shot-1.jpg");
+const shot2 = websiteImg("stockholm-shot-2.jpg");
+const shot3 = websiteImg("stockholm-shot-3.jpg");
 
 export const Route = createFileRoute("/")({
   head: () => ({
