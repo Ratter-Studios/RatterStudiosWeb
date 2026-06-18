@@ -33,10 +33,9 @@ jobs:
 
       - name: Build (pre-rendered static site)
         env:
-          # The site is served from https://<user>.github.io/RatterStudiosWeb/,
-          # so it must be built under that sub-path. If you ever rename the repo,
-          # change this to match the new name.
-          VITE_BASE_PATH: /RatterStudiosWeb/
+          # The site is served at the root of its custom domain
+          # (https://ratterstudios.com/), so it builds under "/".
+          VITE_BASE_PATH: /
         run: bun run build
 
       - name: Add 404 fallback and disable Jekyll

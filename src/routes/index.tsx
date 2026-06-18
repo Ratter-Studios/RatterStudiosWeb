@@ -5,7 +5,6 @@ import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { CtaLink, PillLink } from "@/components/cta-link";
-import { InnerCircleForm } from "@/components/inner-circle-form";
 import { websiteImg } from "@/lib/assets";
 
 const keyart = websiteImg("stockholm-keyart.jpg");
@@ -187,10 +186,10 @@ function Index() {
               Walk with us <em className="text-primary">through 1646.</em>
             </h2>
             <p className="mt-5 max-w-md leading-relaxed text-foreground/65">
-              Research finds, early trailers, and first notice when the playtests open.
+              Research finds, early trailers, and first looks at the world of Stockholm 1646.
             </p>
-            <div className="mt-8 max-w-md">
-              <InnerCircleForm />
+            <div className="mt-8">
+              <CtaLink to="/news">Join the Community</CtaLink>
             </div>
           </Reveal>
         </div>

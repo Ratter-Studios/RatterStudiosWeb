@@ -35,9 +35,6 @@ function markdownData(): Plugin {
 //   - start.ts    - global start instance / request middleware
 //   - server.ts   - custom server entry (our SSR error wrapper)
 export default defineConfig({
-  // Sub-path the site is served from. "/" for local dev (so `bun run dev` is
-  // unaffected); the GitHub Pages deploy workflow sets VITE_BASE_PATH to
-  // "/RatterStudiosWeb/" for the production build.
   base: process.env.VITE_BASE_PATH || "/",
   publicDir: "img",
   plugins: [

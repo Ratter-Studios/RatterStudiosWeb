@@ -2,8 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import type { CSSProperties } from "react";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
-import { InnerCircleForm } from "@/components/inner-circle-form";
 import { PillLink } from "@/components/cta-link";
+import { DiscordQr } from "@/components/discord-qr";
 
 export const Route = createFileRoute("/news")({
   head: () => ({
@@ -47,10 +47,6 @@ function CommunityPage() {
           Join us for major development updates straight from the archives, early looks at upcoming
           trailers, and first notice when we open up for playtests.
         </p>
-
-        <div className="enter mt-12" style={delay(620)}>
-          <InnerCircleForm />
-        </div>
       </section>
 
       <section className="mx-auto max-w-5xl px-6 pb-32 md:px-8">
@@ -61,19 +57,15 @@ function CommunityPage() {
               <h2 className="mt-8 font-display text-3xl font-medium md:text-4xl">
                 The <em className="text-primary">conversation</em>
               </h2>
-              <p className="mt-5 leading-relaxed text-foreground/65">
-                Long-form research threads, early playtests, and direct conversation with the team.
-                The closest seat to the workbench.
-              </p>
-              <PillLink href="https://discord.gg" className="mt-8">
-                Join the server
-              </PillLink>
+              <div className="mt-8 flex items-start gap-3">
+                <PillLink href="https://discord.gg/rafM3mDBVC">Join the server</PillLink>
+                <DiscordQr />
+              </div>
               <div className="mt-8 overflow-hidden rounded-xl border border-border/40 bg-background/40 p-3">
                 <iframe
                   src="https://discord.com/widget?id=1511691078527352922&theme=dark"
                   width="100%"
                   height="350"
-                  allowTransparency
                   frameBorder="0"
                   sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
                   title="Ratter Studios Discord"
