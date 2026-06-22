@@ -12,7 +12,7 @@ export const news: NewsPost[] = [
     date: "2026-05-12",
     title: "Stockholm 1646 - Officially Announced",
     excerpt:
-      "Today we're lifting the veil on our debut title: a narrative noir set in the candlelit streets of 17th-century Stockholm.",
+      "Today we're lifting the veil on our debut title: a historical narrative set in the candlelit streets of 17th-century Stockholm.",
     tag: "Announcement",
   },
   {
