@@ -5,10 +5,7 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { websiteImg } from "@/lib/assets";
 
-const keyart = websiteImg("stockholm-keyart.jpg");
-const shot1 = websiteImg("stockholm-shot-1.jpg");
-const shot2 = websiteImg("stockholm-shot-2.jpg");
-const shot3 = websiteImg("stockholm-shot-3.jpg");
+const keyart = websiteImg("webTitle.jpeg");
 
 export const Route = createFileRoute("/games")({
   head: () => ({
@@ -45,11 +42,11 @@ export const Route = createFileRoute("/games")({
   component: GamesPage,
 });
 
-const shots = [shot1, shot2, shot3];
+const shots = [1, 2, 3, 4, 5].map((n) => websiteImg(`devCapture${n}.jpeg`));
 
 const facts = [
   { label: "Setting", value: "Stockholm, 1646" },
-  { label: "Genre", value: "Narrative Noir" },
+  { label: "Genre", value: "Historical Narrative" },
   { label: "Platform", value: "PC" },
   { label: "Status", value: "In Development" },
 ];

@@ -4,7 +4,7 @@ import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { websiteImg } from "@/lib/assets";
 
-const keyart = websiteImg("stockholm-keyart.jpg");
+const keyart = websiteImg("webTitle.jpeg");
 
 export const Route = createFileRoute("/our-games")({
   head: () => ({
@@ -64,7 +64,7 @@ function OurGamesPage() {
                 Stockholm 1646: <em className="text-primary">Järntorget</em>
               </h2>
               <p className="mt-4 text-sm italic tracking-[0.04em] text-foreground/45">
-                A narrative noir for PC
+                A historical narrative for PC
               </p>
               <p className="mt-6 leading-relaxed text-foreground/70">
                 A cinematic narrative experience drawn from the silence of the archives - candlelit

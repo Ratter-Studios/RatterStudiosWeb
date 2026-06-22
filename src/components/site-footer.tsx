@@ -30,7 +30,7 @@ export function SiteFooter() {
 
           <div className="grid grid-cols-2 gap-12 sm:gap-20">
             <div>
-              <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/60">Explore</p>
+              <p className="text-sm font-medium tracking-[0.04em] text-primary/70">Explore</p>
               <ul className="mt-6 space-y-3">
                 {explore.map((item) => (
                   <li key={item.to}>
@@ -45,33 +45,10 @@ export function SiteFooter() {
               </ul>
             </div>
             <div>
-              <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/60">Connect</p>
+              <p className="text-sm font-medium tracking-[0.04em] text-primary/70">Contact</p>
               <ul className="mt-6 space-y-3">
                 <li>
-                  <a
-                    href="https://tiktok.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-sm text-foreground/60 transition-colors duration-300 hover:text-primary"
-                  >
-                    TikTok
-                  </a>
-                </li>
-                <li>
-                  <Link
-                    to="/news"
-                    className="text-sm text-foreground/60 transition-colors duration-300 hover:text-primary"
-                  >
-                    Discord
-                  </Link>
-                </li>
-                <li>
-                  <a
-                    href="mailto:hello@ratter.studio"
-                    className="text-sm text-foreground/60 transition-colors duration-300 hover:text-primary"
-                  >
-                    Contact
-                  </a>
+                  <span className="text-sm text-foreground/60">Contact</span>
                 </li>
                 <li>
                   <Link

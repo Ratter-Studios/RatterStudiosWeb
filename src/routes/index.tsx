@@ -7,21 +7,21 @@ import { SectionHeading } from "@/components/section-heading";
 import { CtaLink, PillLink } from "@/components/cta-link";
 import { websiteImg } from "@/lib/assets";
 
-const keyart = websiteImg("stockholm-keyart.jpg");
-const shot1 = websiteImg("stockholm-shot-1.jpg");
-const shot2 = websiteImg("stockholm-shot-2.jpg");
-const shot3 = websiteImg("stockholm-shot-3.jpg");
+const titleImage = websiteImg("webTitle.jpeg");
+const shot1 = websiteImg("devCapture1.jpeg");
+const shot2 = websiteImg("devCapture2.jpeg");
+const shot3 = websiteImg("devCapture3.jpeg");
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ratter Studios - Independent Games" },
+      { title: "Ratter Studios" },
       {
         name: "description",
         content:
-          "Ratter Studios is an independent gaming studio. Makers of Stockholm 1646, a noir narrative game set in 17th-century Sweden.",
+          "Ratter Studios is an independent gaming studio. Makers of Stockholm 1646, a historical narrative game set in 17th-century Sweden.",
       },
-      { property: "og:title", content: "Ratter Studios - Independent Games" },
+      { property: "og:title", content: "Ratter Studios" },
       {
         property: "og:description",
         content: "Independent gaming studio. Makers of Stockholm 1646.",
@@ -42,13 +42,13 @@ function Index() {
       <section className="relative flex min-h-svh items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={keyart}
+            src={titleImage}
             alt=""
             width={1920}
             height={1080}
-            className="ken-burns h-full w-full object-cover opacity-45"
+            className="ken-burns h-full w-full object-cover opacity-70"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/70 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
         </div>
         {/* Candlelight glow */}
         <div
@@ -115,7 +115,7 @@ function Index() {
               }
             />
             <p className="mt-4 text-sm italic tracking-[0.04em] text-foreground/45">
-              A narrative noir for PC
+              A historical narrative for PC
             </p>
             <p className="mt-8 max-w-lg leading-relaxed text-foreground/70">
               On the iron-market square, beneath the smoke of the foundries, a maid walks errands
