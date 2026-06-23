@@ -52,7 +52,7 @@ function OurGamesPage() {
                 src={keyart}
                 alt="Stockholm 1646: Järntorget key art"
                 loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.04]"
+                className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-card" />
             </div>
@@ -75,22 +75,6 @@ function OurGamesPage() {
               </span>
             </div>
           </Link>
-        </Reveal>
-
-        <Reveal delay={150}>
-          <div className="mt-6 flex flex-col items-center justify-between gap-4 rounded-2xl border border-border/40 bg-card/20 px-8 py-12 text-center md:flex-row md:text-left">
-            <div>
-              <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/50">
-                In the workshop
-              </p>
-              <p className="mt-4 font-display text-2xl italic text-foreground/45">
-                Whispered about. Not yet named.
-              </p>
-            </div>
-            <p className="text-xs italic tracking-[0.05em] text-foreground/30">
-              Announcement to follow
-            </p>
-          </div>
         </Reveal>
       </section>
     </SiteLayout>

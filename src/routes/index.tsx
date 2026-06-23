@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import type { CSSProperties } from "react";
 import { ArrowDown } from "lucide-react";
 import { SiteLayout } from "@/components/site-layout";
@@ -6,6 +6,7 @@ import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { CtaLink, PillLink } from "@/components/cta-link";
 import { websiteImg } from "@/lib/assets";
+import { ZoomableImage } from "@/components/zoomable-image";
 
 const titleImage = websiteImg("webTitle.jpeg");
 const shot1 = websiteImg("devCapture1.jpeg");
@@ -128,34 +129,18 @@ function Index() {
 
           <Reveal delay={150}>
             <div className="grid grid-cols-2 gap-3">
-              <Link
-                to="/games"
-                className="group relative col-span-2 block overflow-hidden rounded-2xl border border-border/50"
-              >
-                <div className="aspect-video overflow-hidden">
-                  <img
-                    src={shot1}
-                    alt="Järntorget - concept art of a candlelit Stockholm street"
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
-                  />
-                </div>
-              </Link>
+              <ZoomableImage
+                src={shot1}
+                alt="Järntorget concept 1"
+                className="col-span-2 aspect-video overflow-hidden rounded-2xl border border-border/50"
+              />
               {[shot2, shot3].map((src, i) => (
-                <Link
+                <ZoomableImage
                   key={i}
-                  to="/games"
-                  className="group relative block overflow-hidden rounded-2xl border border-border/50"
-                >
-                  <div className="aspect-square overflow-hidden">
-                    <img
-                      src={src}
-                      alt={`Järntorget - atmosphere study ${i + 2}`}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
-                    />
-                  </div>
-                </Link>
+                  src={src}
+                  alt={`Järntorget concept ${i + 2}`}
+                  className="aspect-square overflow-hidden rounded-2xl border border-border/50"
+                />
               ))}
             </div>
           </Reveal>
@@ -167,11 +152,8 @@ function Index() {
         <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 md:grid-cols-2 md:gap-16 md:px-8">
           <Reveal>
             <blockquote className="font-display text-4xl font-medium italic leading-[1.15] text-primary md:text-5xl">
-              "We make history playable."
+              We make history playable.
             </blockquote>
-            <p className="mt-6 text-xs italic tracking-[0.1em] text-foreground/40">
-              The studio principle
-            </p>
             <p className="mt-8 leading-[1.85] text-foreground/70">
               Ratter Studios was founded by a small team of writers, historians, and game-makers who
               couldn't shake the feeling that the most extraordinary stories were already written -

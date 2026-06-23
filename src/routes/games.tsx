@@ -4,6 +4,7 @@ import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { websiteImg } from "@/lib/assets";
+import { ZoomableImage } from "@/components/zoomable-image";
 
 const keyart = websiteImg("webTitle.jpeg");
 
@@ -42,7 +43,9 @@ export const Route = createFileRoute("/games")({
   component: GamesPage,
 });
 
-const shots = [1, 2, 3, 4, 5].map((n) => websiteImg(`devCapture${n}.jpeg`));
+const shots = ["webTitle", "devCapture1", "devCapture2", "devCapture3", "devCapture4", "devCapture5"].map(
+  (n) => websiteImg(`${n}.jpeg`),
+);
 
 const facts = [
   { label: "Setting", value: "Stockholm, 1646" },
@@ -116,14 +119,11 @@ function GamesPage() {
         <div className="mt-14 grid gap-5 md:grid-cols-3">
           {shots.map((src, i) => (
             <Reveal key={i} delay={i * 120}>
-              <div className="group aspect-[4/5] overflow-hidden rounded-2xl border border-border/50 bg-card">
-                <img
-                  src={src}
-                  alt={`Järntorget concept art ${i + 1}`}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.05]"
-                />
-              </div>
+              <ZoomableImage
+                src={src}
+                alt={`Järntorget concept art ${i + 1}`}
+                className="aspect-[4/5] overflow-hidden rounded-2xl border border-border/50 bg-card"
+              />
             </Reveal>
           ))}
         </div>
