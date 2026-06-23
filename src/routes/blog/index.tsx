@@ -58,15 +58,11 @@ function BlogIndex() {
             {posts.map((post, i) => (
               <li key={post.slug}>
                 <Reveal delay={i * 80}>
-                  <Link
-                    to="/blog/$slug"
-                    params={{ slug: post.slug }}
-                    className="group block rounded-2xl border border-border/50 bg-card p-8 transition-colors duration-500 hover:border-primary/40 md:p-10"
-                  >
+                  <div className="block rounded-2xl border border-border/50 bg-card p-8 md:p-10">
                     <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/70">
                       {formatDate(post.frontmatter.date)} · {post.frontmatter.author}
                     </p>
-                    <h2 className="mt-5 font-display text-3xl font-medium transition-colors duration-300 group-hover:text-primary md:text-4xl">
+                    <h2 className="mt-5 font-display text-3xl font-medium md:text-4xl">
                       {post.frontmatter.title}
                     </h2>
                     {post.frontmatter.excerpt ? (
@@ -74,10 +70,14 @@ function BlogIndex() {
                         {post.frontmatter.excerpt}
                       </p>
                     ) : null}
-                    <span className="btn-ratter mt-8 inline-flex self-start rounded-full px-5 py-2 text-xs tracking-[0.06em] group-hover:border-primary">
+                    <Link
+                      to="/blog/$slug"
+                      params={{ slug: post.slug }}
+                      className="btn-ratter mt-8 inline-flex self-start rounded-full px-5 py-2 text-xs tracking-[0.06em]"
+                    >
                       Read more
-                    </span>
-                  </Link>
+                    </Link>
+                  </div>
                 </Reveal>
               </li>
             ))}
