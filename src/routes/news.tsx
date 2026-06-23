@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { PillLink } from "@/components/cta-link";
-import { DiscordQr } from "@/components/discord-qr";
+import { QrButton } from "@/components/qr-button";
 
 export const Route = createFileRoute("/news")({
   head: () => ({
@@ -50,16 +50,16 @@ function CommunityPage() {
       </section>
 
       <section className="mx-auto max-w-5xl px-6 pb-32 md:px-8">
-        <div className="grid items-start gap-6 md:grid-cols-2">
+        <div className="grid items-stretch gap-6 md:grid-cols-2">
           <Reveal>
-            <div className="relative rounded-2xl border border-border/50 bg-card p-8 md:p-10">
+            <div className="relative h-full rounded-2xl border border-border/50 bg-card p-8 md:p-10">
               <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/70">Discord</p>
               <h2 className="mt-8 font-display text-3xl font-medium md:text-4xl">
                 The <em className="text-primary">conversation</em>
               </h2>
               <div className="mt-8 flex items-start gap-3">
                 <PillLink href="https://discord.gg/rafM3mDBVC">Join the server</PillLink>
-                <DiscordQr />
+                <QrButton file="discord-qr.png" label="Discord" />
               </div>
               <div className="mt-8 overflow-hidden rounded-xl border border-border/40 bg-background/40 p-3">
                 <iframe
@@ -70,6 +70,23 @@ function CommunityPage() {
                   sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
                   title="Ratter Studios Discord"
                 />
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <div className="relative flex h-full flex-col rounded-2xl border border-border/50 bg-card p-8 md:p-10">
+              <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/70">Patreon</p>
+              <h2 className="mt-8 font-display text-3xl font-medium md:text-4xl">
+                The <em className="text-primary">patrons</em>
+              </h2>
+              <p className="mt-5 leading-relaxed text-foreground/65">
+                Back the studio directly - behind-the-scenes builds, dev logs, and a hand in shaping
+                1646.
+              </p>
+              <div className="mt-8 flex items-start gap-3">
+                <PillLink href="https://patreon.com/RatterStudios">Join on Patreon</PillLink>
+                <QrButton file="patreon-qr.png" label="Patreon" />
               </div>
             </div>
           </Reveal>
