@@ -43,10 +43,7 @@ function OurGamesPage() {
 
       <section className="mx-auto max-w-6xl px-6 pb-32 md:px-8">
         <Reveal>
-          <Link
-            to="/games"
-            className="group relative grid overflow-hidden rounded-2xl border border-border/50 bg-card transition-colors duration-500 hover:border-primary/40 md:grid-cols-[5fr_4fr]"
-          >
+          <div className="relative grid overflow-hidden rounded-2xl border border-border/50 bg-card md:grid-cols-[5fr_4fr]">
             <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[28rem]">
               <img
                 src={keyart}
@@ -70,11 +67,14 @@ function OurGamesPage() {
                 A cinematic narrative experience drawn from the silence of the archives - candlelit
                 streets, court intrigue, and a maid's errand that will decide a lady's fate.
               </p>
-              <span className="btn-ratter mt-auto self-start rounded-full px-5 py-2 text-xs tracking-[0.06em] group-hover:border-primary">
+              <Link
+                to="/games"
+                className="btn-ratter mt-auto self-start rounded-full px-5 py-2 text-xs tracking-[0.06em]"
+              >
                 View game
-              </span>
+              </Link>
             </div>
-          </Link>
+          </div>
         </Reveal>
       </section>
     </SiteLayout>

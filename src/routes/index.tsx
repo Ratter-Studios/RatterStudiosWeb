@@ -171,7 +171,7 @@ function Index() {
               Research finds, early trailers, and first looks at the world of Stockholm 1646.
             </p>
             <div className="mt-8">
-              <CtaLink to="/news">Join the Community</CtaLink>
+              <PillLink to="/news">Join the Community</PillLink>
             </div>
           </Reveal>
         </div>

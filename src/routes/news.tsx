@@ -52,7 +52,7 @@ function CommunityPage() {
       <section className="mx-auto max-w-5xl px-6 pb-32 md:px-8">
         <div className="grid items-start gap-6 md:grid-cols-2">
           <Reveal>
-            <div className="group relative rounded-2xl border border-border/50 bg-card p-8 transition-colors duration-500 hover:border-primary/40 md:p-10">
+            <div className="relative rounded-2xl border border-border/50 bg-card p-8 md:p-10">
               <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/70">Discord</p>
               <h2 className="mt-8 font-display text-3xl font-medium md:text-4xl">
                 The <em className="text-primary">conversation</em>
@@ -71,22 +71,6 @@ function CommunityPage() {
                   title="Ratter Studios Discord"
                 />
               </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={120}>
-            <div className="group relative block rounded-2xl border border-border/50 bg-card p-8 transition-colors duration-500 hover:border-primary/40 md:p-10">
-              <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/70">TikTok</p>
-              <h2 className="mt-8 font-display text-3xl font-medium md:text-4xl">
-                The <em className="text-primary">Field Notes</em>
-              </h2>
-              <p className="mt-5 leading-relaxed text-foreground/65">
-                Short dispatches from the archive - strange entries, surprising characters, the
-                day-to-day of building a 17th-century city in pixels.
-              </p>
-              <span className="btn-ratter mt-8 self-start rounded-full px-5 py-2 text-xs tracking-[0.06em] group-hover:border-primary">
-                Follow on TikTok
-              </span>
             </div>
           </Reveal>
         </div>

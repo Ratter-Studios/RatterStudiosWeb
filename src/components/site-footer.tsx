@@ -48,7 +48,12 @@ export function SiteFooter() {
               <p className="text-sm font-medium tracking-[0.04em] text-primary/70">Contact</p>
               <ul className="mt-6 space-y-3">
                 <li>
-                  <span className="text-sm text-foreground/60">Contact</span>
+                  <a
+                    href="mailto:karin.hellqvist@humarena.se"
+                    className="text-sm text-foreground/60 transition-colors duration-300 hover:text-primary"
+                  >
+                    Contact
+                  </a>
                 </li>
                 <li>
                   <Link
