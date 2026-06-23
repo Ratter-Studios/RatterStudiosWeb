@@ -1,5 +1,5 @@
 ---
-title: Welcome to the Dev Blog
+title: Welcome to Game Updates
 date: 2026-06-15
 author: Jamie
 excerpt: A new home for our development updates. Written by the team building Stockholm 1646.

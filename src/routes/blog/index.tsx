@@ -7,13 +7,13 @@ import { posts, formatDate } from "@/lib/blog";
 export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
-      { title: "Dev Blog - Ratter Studios" },
+      { title: "Game Updates - Ratter Studios" },
       {
         name: "description",
         content:
           "Development updates from the team at Ratter Studios - research, progress, and studio news.",
       },
-      { property: "og:title", content: "Dev Blog - Ratter Studios" },
+      { property: "og:title", content: "Game Updates - Ratter Studios" },
       {
         property: "og:description",
         content: "Development updates straight from the workshop.",
@@ -40,7 +40,7 @@ function BlogIndex() {
           className="enter mt-6 font-display text-5xl font-medium leading-[1.02] md:text-7xl"
           style={delay(250)}
         >
-          Dev <em className="text-primary">Blog</em>
+          Game <em className="text-primary">Updates</em>
         </h1>
         <p
           className="enter mt-8 text-lg leading-relaxed text-foreground/70"
