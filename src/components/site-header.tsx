@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { websiteImg } from "@/lib/assets";
 
 const wordmark = websiteImg("ratter-wordmark.png");
@@ -11,6 +11,28 @@ const nav = [
   { to: "/blog", label: "Game Updates" },
   { to: "/community", label: "Community" },
 ] as const;
+
+type Social = { label: string; icon: string } & (
+  | { to: string; href?: never }
+  | { href: string; to?: never }
+);
+
+const socials: readonly Social[] = [
+  { label: "Discord", icon: websiteImg("discordIcon-recolored.png"), to: "/community" },
+  { label: "Patreon", icon: websiteImg("PatreonIcon-recolored.png"), to: "/community" },
+  { label: "Linktree", icon: websiteImg("linktreeIcon-recolored.png"), href: "https://linktr.ee/RatterStudios" },
+] as const;
+
+const maskStyle = (icon: string): CSSProperties => ({
+  maskImage: `url(${icon})`,
+  WebkitMaskImage: `url(${icon})`,
+  maskRepeat: "no-repeat",
+  WebkitMaskRepeat: "no-repeat",
+  maskPosition: "center",
+  WebkitMaskPosition: "center",
+  maskSize: "contain",
+  WebkitMaskSize: "contain",
+});
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -63,21 +85,53 @@ export function SiteHeader() {
             />
           </Link>
 
-          <nav className="hidden items-center gap-1 md:flex">
-            {nav.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className={`nav-link tracking-[0.04em] ${scrolled ? "text-sm" : "text-base"}`}
-                activeProps={{
-                  className: `nav-link is-active tracking-[0.04em] ${scrolled ? "text-sm" : "text-base"}`,
-                }}
-                activeOptions={{ exact: item.to === "/" }}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="hidden items-center gap-5 md:flex">
+            <nav className="flex items-center gap-1">
+              {nav.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className={`nav-link tracking-[0.04em] ${scrolled ? "text-sm" : "text-base"}`}
+                  activeProps={{
+                    className: `nav-link is-active tracking-[0.04em] ${scrolled ? "text-sm" : "text-base"}`,
+                  }}
+                  activeOptions={{ exact: item.to === "/" }}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="flex items-center">
+              {socials.map((s) => {
+                const mask = (
+                  <span
+                    aria-hidden
+                    className="h-6 w-6 bg-muted-foreground transition-colors duration-300 group-hover:bg-foreground group-focus-visible:bg-foreground"
+                    style={maskStyle(s.icon)}
+                  />
+                );
+                const cls =
+                  "group flex h-9 w-8 items-center justify-center rounded-md transition-colors";
+                return "href" in s ? (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={s.label}
+                    className={cls}
+                  >
+                    {mask}
+                  </a>
+                ) : (
+                  <Link key={s.label} to={s.to} aria-label={s.label} className={cls}>
+                    {mask}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
 
           <button
             type="button"
@@ -138,6 +192,49 @@ export function SiteHeader() {
               {item.label}
             </Link>
           ))}
+
+          <div
+            className={`mt-4 flex items-center gap-5 transition-all duration-500 ${
+              open ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
+            }`}
+            style={{ transitionDelay: open ? `${120 + nav.length * 80}ms` : "0ms" }}
+          >
+            {socials.map((s) => {
+              const mask = (
+                <span
+                  aria-hidden
+                  className="h-9 w-9 bg-muted-foreground transition-colors duration-300 group-hover:bg-foreground group-focus-visible:bg-foreground"
+                  style={maskStyle(s.icon)}
+                />
+              );
+              const cls = "group flex h-12 w-12 items-center justify-center";
+              return "href" in s ? (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setOpen(false)}
+                  tabIndex={open ? undefined : -1}
+                  aria-label={s.label}
+                  className={cls}
+                >
+                  {mask}
+                </a>
+              ) : (
+                <Link
+                  key={s.label}
+                  to={s.to}
+                  onClick={() => setOpen(false)}
+                  tabIndex={open ? undefined : -1}
+                  aria-label={s.label}
+                  className={cls}
+                >
+                  {mask}
+                </Link>
+              );
+            })}
+          </div>
         </nav>
       </div>
     </>
