@@ -15,8 +15,8 @@ import { Route as OurGamesRouteImport } from './routes/our-games'
 import { Route as CommunityRouteImport } from './routes/community'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as BlogIndexRouteImport } from './routes/blog/index'
-import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
+import { Route as GameUpdatesIndexRouteImport } from './routes/game-updates/index'
+import { Route as GameUpdatesSlugRouteImport } from './routes/game-updates/$slug'
 
 const SthlmJrnRoute = SthlmJrnRouteImport.update({
   id: '/sthlm-jrn',
@@ -48,14 +48,14 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogIndexRoute = BlogIndexRouteImport.update({
-  id: '/blog/',
-  path: '/blog/',
+const GameUpdatesIndexRoute = GameUpdatesIndexRouteImport.update({
+  id: '/game-updates/',
+  path: '/game-updates/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogSlugRoute = BlogSlugRouteImport.update({
-  id: '/blog/$slug',
-  path: '/blog/$slug',
+const GameUpdatesSlugRoute = GameUpdatesSlugRouteImport.update({
+  id: '/game-updates/$slug',
+  path: '/game-updates/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -66,8 +66,8 @@ export interface FileRoutesByFullPath {
   '/our-games': typeof OurGamesRoute
   '/privacy': typeof PrivacyRoute
   '/sthlm-jrn': typeof SthlmJrnRoute
-  '/blog/$slug': typeof BlogSlugRoute
-  '/blog/': typeof BlogIndexRoute
+  '/game-updates/$slug': typeof GameUpdatesSlugRoute
+  '/game-updates/': typeof GameUpdatesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -76,8 +76,8 @@ export interface FileRoutesByTo {
   '/our-games': typeof OurGamesRoute
   '/privacy': typeof PrivacyRoute
   '/sthlm-jrn': typeof SthlmJrnRoute
-  '/blog/$slug': typeof BlogSlugRoute
-  '/blog': typeof BlogIndexRoute
+  '/game-updates/$slug': typeof GameUpdatesSlugRoute
+  '/game-updates': typeof GameUpdatesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -87,8 +87,8 @@ export interface FileRoutesById {
   '/our-games': typeof OurGamesRoute
   '/privacy': typeof PrivacyRoute
   '/sthlm-jrn': typeof SthlmJrnRoute
-  '/blog/$slug': typeof BlogSlugRoute
-  '/blog/': typeof BlogIndexRoute
+  '/game-updates/$slug': typeof GameUpdatesSlugRoute
+  '/game-updates/': typeof GameUpdatesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -99,8 +99,8 @@ export interface FileRouteTypes {
     | '/our-games'
     | '/privacy'
     | '/sthlm-jrn'
-    | '/blog/$slug'
-    | '/blog/'
+    | '/game-updates/$slug'
+    | '/game-updates/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -109,8 +109,8 @@ export interface FileRouteTypes {
     | '/our-games'
     | '/privacy'
     | '/sthlm-jrn'
-    | '/blog/$slug'
-    | '/blog'
+    | '/game-updates/$slug'
+    | '/game-updates'
   id:
     | '__root__'
     | '/'
@@ -119,8 +119,8 @@ export interface FileRouteTypes {
     | '/our-games'
     | '/privacy'
     | '/sthlm-jrn'
-    | '/blog/$slug'
-    | '/blog/'
+    | '/game-updates/$slug'
+    | '/game-updates/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -130,8 +130,8 @@ export interface RootRouteChildren {
   OurGamesRoute: typeof OurGamesRoute
   PrivacyRoute: typeof PrivacyRoute
   SthlmJrnRoute: typeof SthlmJrnRoute
-  BlogSlugRoute: typeof BlogSlugRoute
-  BlogIndexRoute: typeof BlogIndexRoute
+  GameUpdatesSlugRoute: typeof GameUpdatesSlugRoute
+  GameUpdatesIndexRoute: typeof GameUpdatesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -178,18 +178,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/': {
-      id: '/blog/'
-      path: '/blog'
-      fullPath: '/blog/'
-      preLoaderRoute: typeof BlogIndexRouteImport
+    '/game-updates/': {
+      id: '/game-updates/'
+      path: '/game-updates'
+      fullPath: '/game-updates/'
+      preLoaderRoute: typeof GameUpdatesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog/$slug': {
-      id: '/blog/$slug'
-      path: '/blog/$slug'
-      fullPath: '/blog/$slug'
-      preLoaderRoute: typeof BlogSlugRouteImport
+    '/game-updates/$slug': {
+      id: '/game-updates/$slug'
+      path: '/game-updates/$slug'
+      fullPath: '/game-updates/$slug'
+      preLoaderRoute: typeof GameUpdatesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -202,8 +202,8 @@ const rootRouteChildren: RootRouteChildren = {
   OurGamesRoute: OurGamesRoute,
   PrivacyRoute: PrivacyRoute,
   SthlmJrnRoute: SthlmJrnRoute,
-  BlogSlugRoute: BlogSlugRoute,
-  BlogIndexRoute: BlogIndexRoute,
+  GameUpdatesSlugRoute: GameUpdatesSlugRoute,
+  GameUpdatesIndexRoute: GameUpdatesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

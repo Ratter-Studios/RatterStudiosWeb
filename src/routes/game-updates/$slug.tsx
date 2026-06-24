@@ -2,7 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site-layout";
 import { getPost, formatDate, withBase, baseifyHtml } from "@/lib/blog";
 
-export const Route = createFileRoute("/blog/$slug")({
+export const Route = createFileRoute("/game-updates/$slug")({
   loader: ({ params }) => {
     const post = getPost(params.slug);
     if (!post) throw notFound();
@@ -16,10 +16,10 @@ export const Route = createFileRoute("/blog/$slug")({
           { property: "og:title", content: loaderData.frontmatter.title },
           { property: "og:description", content: loaderData.frontmatter.excerpt ?? "" },
           { property: "og:type", content: "article" },
-          { property: "og:url", content: `/blog/${loaderData.slug}` },
+          { property: "og:url", content: `/game-updates/${loaderData.slug}` },
         ]
       : [],
-    links: loaderData ? [{ rel: "canonical", href: `/blog/${loaderData.slug}` }] : [],
+    links: loaderData ? [{ rel: "canonical", href: `/game-updates/${loaderData.slug}` }] : [],
   }),
   component: BlogPost,
 });

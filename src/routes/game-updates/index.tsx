@@ -4,7 +4,7 @@ import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { posts, formatDate } from "@/lib/blog";
 
-export const Route = createFileRoute("/blog/")({
+export const Route = createFileRoute("/game-updates/")({
   head: () => ({
     meta: [
       { title: "Game Updates - Ratter Studios" },
@@ -18,9 +18,9 @@ export const Route = createFileRoute("/blog/")({
         property: "og:description",
         content: "Development updates straight from the workshop.",
       },
-      { property: "og:url", content: "/blog" },
+      { property: "og:url", content: "/game-updates" },
     ],
-    links: [{ rel: "canonical", href: "/blog" }],
+    links: [{ rel: "canonical", href: "/game-updates" }],
   }),
   component: BlogIndex,
 });
@@ -71,7 +71,7 @@ function BlogIndex() {
                       </p>
                     ) : null}
                     <Link
-                      to="/blog/$slug"
+                      to="/game-updates/$slug"
                       params={{ slug: post.slug }}
                       className="btn-ratter mt-8 inline-flex self-start rounded-full px-5 py-2 text-xs tracking-[0.06em]"
                     >
