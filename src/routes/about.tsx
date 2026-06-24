@@ -51,7 +51,7 @@ function StoryPage() {
         <p className="enter" style={delay(550)}>
           Today, we are a small team of historians and game developers, working together to turn historical sources into immersive PC games.
           <br />
-          he most extraordinary stories are already written, buried in the archives. 
+          The most extraordinary stories are already written, buried in the archives.
           <br />
           We started this journey to bring those unfiltered stories back to life and show how the past actually was: warm, complicated, alive, colourful and raw.
         </p>
