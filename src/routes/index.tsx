@@ -119,11 +119,12 @@ function Index() {
               A historical narrative for PC
             </p>
             <p className="mt-8 max-w-lg leading-relaxed text-foreground/70">
-              On the iron-market square, beneath the smoke of the foundries, a maid walks errands
-              that will decide a court lady's fate. Every name, every ledger, every shadow is real.
+              Järntorget 17th century a maid's goal is to rebuild her life from the very bottom.
+              <br />
+              How will she handle stressful and tricky tasks in order to climb the human hierarchy?
             </p>
             <div className="mt-10">
-              <PillLink to="/games">Enter the city</PillLink>
+              <PillLink to="/games">View Game</PillLink>
             </div>
           </Reveal>
 
@@ -155,9 +156,13 @@ function Index() {
               We make history playable.
             </blockquote>
             <p className="mt-8 leading-[1.85] text-foreground/70">
-              Ratter Studios was founded by a small team of writers, historians, and game-makers who
-              couldn't shake the feeling that the most extraordinary stories were already written -
-              buried in court ledgers, parish books, and the quiet margins of the archive.
+              Ratter Studios
+              <br />
+              A small studio. A long memory.
+              <br />
+              When the best of two worlds collided -historians- and
+              <br /> 
+              -game developers- Ratter Studios was born....
             </p>
             <div className="mt-8">
               <PillLink to="/about">Our story</PillLink>
@@ -168,7 +173,7 @@ function Index() {
               Walk with us <em className="text-primary">through 1646.</em>
             </h2>
             <p className="mt-5 max-w-md leading-relaxed text-foreground/65">
-              Research finds, early trailers, and first looks at the world of Stockholm 1646.
+              Follow the reclaiming of history on our social media, Discord and Patreon and 
             </p>
             <div className="mt-8">
               <PillLink to="/news">Join the Community</PillLink>

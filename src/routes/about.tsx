@@ -38,16 +38,22 @@ function StoryPage() {
         </h1>
       </section>
 
-      <section className="mx-auto max-w-2xl space-y-8 px-6 pb-24 text-lg leading-[1.85] text-foreground/75 md:px-8">
+      <section className="mx-auto max-w-2xl space-y-8 px-6 pb-24 text-center text-lg leading-[1.85] text-foreground/75 md:px-8">
         <p className="enter" style={delay(450)}>
-          Ratter Studios was founded by a small team of writers, historians, and game-makers who
-          couldn't shake the feeling that the most extraordinary stories were already written -
-          buried in court ledgers, parish books, and the quiet margins of the archive.
+          Ratter Studios
+          <br />
+          A small studio. A long memory.
+          <br />
+          When the best of two worlds collided -historians- and
+          <br />
+          -game developers- Ratter Studios was born.
         </p>
         <p className="enter" style={delay(550)}>
-          We started this studio to bring those stories back into the light. Not as costume drama,
-          not as fantasy in period dress, but as the past actually was: warm, complicated, alive,
-          and infinitely strange.
+          Today, we are a small team of historians and game developers, working together to turn historical sources into immersive PC games.
+          <br />
+          he most extraordinary stories are already written, buried in the archives. 
+          <br />
+          We started this journey to bring those unfiltered stories back to life and show how the past actually was: warm, complicated, alive, colourful and raw.
         </p>
         <p className="enter font-display text-2xl italic text-primary" style={delay(650)}>
           We make history playable.

@@ -46,7 +46,7 @@ function BlogIndex() {
           className="enter mt-8 text-lg leading-relaxed text-foreground/70"
           style={delay(400)}
         >
-          Development updates from the team at Ratter Studios - research, progress, and studio news.
+          Development updates from the team at Ratter Studios, research, progress, and studio news.
         </p>
       </section>
 

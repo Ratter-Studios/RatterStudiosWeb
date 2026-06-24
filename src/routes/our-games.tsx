@@ -36,8 +36,7 @@ function OurGamesPage() {
           Our <em className="text-primary">Games</em>
         </h1>
         <p className="enter mt-8 text-lg leading-relaxed text-foreground/70" style={delay(420)}>
-          Each title is a quiet act of historical fiction - hand-crafted, researched, and shaped by
-          the archives that inspired it.
+          In our small team, we have started to craft Stockholm 1646: Järntorget.
         </p>
       </section>
 
@@ -64,8 +63,9 @@ function OurGamesPage() {
                 A historical narrative for PC
               </p>
               <p className="mt-6 leading-relaxed text-foreground/70">
-                A cinematic narrative experience drawn from the silence of the archives - candlelit
-                streets, court intrigue, and a maid's errand that will decide a lady's fate.
+                Järntorget 17th century a maid's goal is to rebuild her life from the very bottom.
+                <br />
+                How will she handle stressful and tricky tasks in order to climb the human hierarchy?
               </p>
               <Link
                 to="/games"

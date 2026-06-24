@@ -14,7 +14,7 @@ media:
 
 content:
   - name: blog
-    label: Dev Blog
+    label: Game Updates
     type: collection
     path: src/content/blog
     format: yaml-frontmatter

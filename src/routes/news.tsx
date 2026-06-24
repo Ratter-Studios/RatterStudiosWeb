@@ -40,12 +40,10 @@ function CommunityPage() {
           Step inside <em className="text-primary">the workshop.</em>
         </h1>
         <p className="enter mt-8 text-lg leading-relaxed text-foreground/70" style={delay(400)}>
-          We don't believe in newsletters that go silent for months. We share the raw research, the
-          false starts, and the candlelit breakthroughs - as they happen.
+          We are on a mission to bring forgotten and hard to access history to the public.
         </p>
         <p className="enter mt-6 leading-relaxed text-foreground/80" style={delay(500)}>
-          Join us for major development updates straight from the archives, early looks at upcoming
-          trailers, and first notice when we open up for playtests.
+          We are on a mission to document, listen and share the development process with the community.
         </p>
       </section>
 
@@ -80,12 +78,8 @@ function CommunityPage() {
               <h2 className="mt-8 font-display text-3xl font-medium md:text-4xl">
                 The <em className="text-primary">patrons</em>
               </h2>
-              <p className="mt-5 leading-relaxed text-foreground/65">
-                Back the studio directly - behind-the-scenes builds, dev logs, and a hand in shaping
-                1646.
-              </p>
               <div className="mt-8 flex items-start gap-3">
-                <PillLink href="https://patreon.com/RatterStudios">Join on Patreon</PillLink>
+                <PillLink href="https://patreon.com/RatterStudios">To Patreon</PillLink>
                 <QrButton file="patreon-qr.png" label="Patreon" />
               </div>
             </div>

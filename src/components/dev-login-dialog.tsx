@@ -33,7 +33,7 @@ export function DevLoginDialog() {
         <DialogHeader>
           <DialogTitle className="font-display text-2xl">Dev Login</DialogTitle>
           <DialogDescription>
-            Dev blog posts are written in Pages CMS. Sign in with GitHub to publish.
+            Game Updates posts are written in Pages CMS. Sign in with GitHub to publish.
           </DialogDescription>
         </DialogHeader>
 
