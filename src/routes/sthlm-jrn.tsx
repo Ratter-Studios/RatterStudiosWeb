@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type CSSProperties } from "react";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
@@ -106,7 +106,30 @@ function GamesPage() {
                 >
                   <div className="overflow-hidden">
                     <p className="mt-6 border-t border-border/50 pt-6 text-sm leading-[1.85] text-foreground/70 [overflow-wrap:anywhere]">
-                      TEST TEMPTEST TEMPTEST TEMPTEST TEMPTEST TEMPTEST TEMPTEST TEMPTEST TEMPTEST TEMPTEST TEMPTEST TEMPTEST TEMPTEST TEMPTEST TEMP
+                      This game demo takes place at the Inn “Blå Örn”.
+                      <br />
+                      <br />
+                      Working at the historic Inn “Blå Örn”, you will man the bar, serve drinks, and mainly serve your “enemies” while coaxing secrets out of them. Pretend to party with the patrons while fishing out useful information. Some of this knowledge might be useful for certain tasks...
+                      <br />
+                      <br />
+                      In the future, we plan to expand the demo with new parts of Järntorget, new features, mechanics, and more.
+                      <br />
+                      <br />
+                      Feel free to join our{" "}
+                      <Link
+                        to="/community"
+                        className="text-primary underline underline-offset-2 transition-colors hover:text-primary/80"
+                      >
+                        community Discord server
+                      </Link>
+                      , follow us on social media for game updates, and check out our{" "}
+                      <Link
+                        to="/community"
+                        className="text-primary underline underline-offset-2 transition-colors hover:text-primary/80"
+                      >
+                        Patreon
+                      </Link>{" "}
+                      for behind-the-scenes content and more detailed development updates.
                     </p>
                   </div>
                 </div>
