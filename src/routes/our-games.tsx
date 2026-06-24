@@ -68,7 +68,7 @@ function OurGamesPage() {
                 How will she handle stressful and tricky tasks in order to climb the human hierarchy?
               </p>
               <Link
-                to="/games"
+                to="/sthlm-jrn"
                 className="btn-ratter mt-auto self-start rounded-full px-5 py-2 text-xs tracking-[0.06em]"
               >
                 View game

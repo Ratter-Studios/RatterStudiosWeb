@@ -9,15 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SthlmJrnRouteImport } from './routes/sthlm-jrn'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as OurGamesRouteImport } from './routes/our-games'
-import { Route as NewsRouteImport } from './routes/news'
-import { Route as GamesRouteImport } from './routes/games'
+import { Route as CommunityRouteImport } from './routes/community'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 
+const SthlmJrnRoute = SthlmJrnRouteImport.update({
+  id: '/sthlm-jrn',
+  path: '/sthlm-jrn',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -28,14 +33,9 @@ const OurGamesRoute = OurGamesRouteImport.update({
   path: '/our-games',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NewsRoute = NewsRouteImport.update({
-  id: '/news',
-  path: '/news',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GamesRoute = GamesRouteImport.update({
-  id: '/games',
-  path: '/games',
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -62,20 +62,20 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/games': typeof GamesRoute
-  '/news': typeof NewsRoute
+  '/community': typeof CommunityRoute
   '/our-games': typeof OurGamesRoute
   '/privacy': typeof PrivacyRoute
+  '/sthlm-jrn': typeof SthlmJrnRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/games': typeof GamesRoute
-  '/news': typeof NewsRoute
+  '/community': typeof CommunityRoute
   '/our-games': typeof OurGamesRoute
   '/privacy': typeof PrivacyRoute
+  '/sthlm-jrn': typeof SthlmJrnRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -83,10 +83,10 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/games': typeof GamesRoute
-  '/news': typeof NewsRoute
+  '/community': typeof CommunityRoute
   '/our-games': typeof OurGamesRoute
   '/privacy': typeof PrivacyRoute
+  '/sthlm-jrn': typeof SthlmJrnRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -95,30 +95,30 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
-    | '/games'
-    | '/news'
+    | '/community'
     | '/our-games'
     | '/privacy'
+    | '/sthlm-jrn'
     | '/blog/$slug'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/games'
-    | '/news'
+    | '/community'
     | '/our-games'
     | '/privacy'
+    | '/sthlm-jrn'
     | '/blog/$slug'
     | '/blog'
   id:
     | '__root__'
     | '/'
     | '/about'
-    | '/games'
-    | '/news'
+    | '/community'
     | '/our-games'
     | '/privacy'
+    | '/sthlm-jrn'
     | '/blog/$slug'
     | '/blog/'
   fileRoutesById: FileRoutesById
@@ -126,16 +126,23 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  GamesRoute: typeof GamesRoute
-  NewsRoute: typeof NewsRoute
+  CommunityRoute: typeof CommunityRoute
   OurGamesRoute: typeof OurGamesRoute
   PrivacyRoute: typeof PrivacyRoute
+  SthlmJrnRoute: typeof SthlmJrnRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sthlm-jrn': {
+      id: '/sthlm-jrn'
+      path: '/sthlm-jrn'
+      fullPath: '/sthlm-jrn'
+      preLoaderRoute: typeof SthlmJrnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -150,18 +157,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OurGamesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/news': {
-      id: '/news'
-      path: '/news'
-      fullPath: '/news'
-      preLoaderRoute: typeof NewsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/games': {
-      id: '/games'
-      path: '/games'
-      fullPath: '/games'
-      preLoaderRoute: typeof GamesRouteImport
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -198,10 +198,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  GamesRoute: GamesRoute,
-  NewsRoute: NewsRoute,
+  CommunityRoute: CommunityRoute,
   OurGamesRoute: OurGamesRoute,
   PrivacyRoute: PrivacyRoute,
+  SthlmJrnRoute: SthlmJrnRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
 }

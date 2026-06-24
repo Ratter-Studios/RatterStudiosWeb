@@ -4,8 +4,9 @@ import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { PillLink } from "@/components/cta-link";
 import { QrButton } from "@/components/qr-button";
+import { websiteImg } from "@/lib/assets";
 
-export const Route = createFileRoute("/news")({
+export const Route = createFileRoute("/community")({
   head: () => ({
     meta: [
       { title: "Community - Ratter Studios" },
@@ -20,9 +21,9 @@ export const Route = createFileRoute("/news")({
         content:
           "Behind-the-scenes research, early access, and the conversation around Järntorget.",
       },
-      { property: "og:url", content: "/news" },
+      { property: "og:url", content: "/community" },
     ],
-    links: [{ rel: "canonical", href: "/news" }],
+    links: [{ rel: "canonical", href: "/community" }],
   }),
   component: CommunityPage,
 });
@@ -81,6 +82,13 @@ function CommunityPage() {
               <div className="mt-8 flex items-start gap-3">
                 <PillLink href="https://patreon.com/RatterStudios">To Patreon</PillLink>
                 <QrButton file="patreon-qr.png" label="Patreon" />
+              </div>
+              <div className="mt-8 overflow-hidden rounded-xl border border-border/40 bg-background/40 p-3">
+                <img
+                  src={websiteImg("PatreonImageFinal.jpeg")}
+                  alt="Ratter Studios on Patreon"
+                  className="h-[350px] w-full rounded-xl object-cover"
+                />
               </div>
             </div>
           </Reveal>

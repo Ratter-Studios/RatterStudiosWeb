@@ -9,7 +9,7 @@ const explore = [
   { to: "/our-games", label: "Our Games" },
   { to: "/about", label: "Our Story" },
   { to: "/blog", label: "Game Updates" },
-  { to: "/news", label: "Community" },
+  { to: "/community", label: "Community" },
 ] as const;
 
 export function SiteFooter() {
@@ -21,7 +21,7 @@ export function SiteFooter() {
           <div className="flex max-w-xs flex-col">
             <img src={wordmark} alt="Ratter Studios" className="h-9 w-auto self-start object-contain" />
             <p className="mt-6 font-display text-lg italic leading-snug text-foreground/50">
-              Turning forgotten archives into cinematic, living worlds.
+              An independent studio turning forgotten archives into cinematic, living worlds.
             </p>
             <div className="mt-10 md:mt-auto">
               <DevLoginDialog />
@@ -73,7 +73,7 @@ export function SiteFooter() {
             © {new Date().getFullYear()} Ratter Studios
           </p>
           <p className="text-xs italic tracking-[0.05em] text-foreground/35">
-            An independent game studio
+            An independent game development studio
           </p>
         </div>
       </div>

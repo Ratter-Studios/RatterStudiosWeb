@@ -90,7 +90,7 @@ function Index() {
           </p>
           <div className="enter mt-12 flex flex-wrap justify-center gap-6" style={delay(720)}>
             <CtaLink to="/our-games">Our Games</CtaLink>
-            <CtaLink to="/news">Join the Community</CtaLink>
+            <CtaLink to="/community">Join the Community</CtaLink>
           </div>
         </div>
 
@@ -124,7 +124,7 @@ function Index() {
               How will she handle stressful and tricky tasks in order to climb the human hierarchy?
             </p>
             <div className="mt-10">
-              <PillLink to="/games">View Game</PillLink>
+              <PillLink to="/sthlm-jrn">View Game</PillLink>
             </div>
           </Reveal>
 
@@ -176,7 +176,7 @@ function Index() {
               Follow the reclaiming of history on our social media, Discord and Patreon and 
             </p>
             <div className="mt-8">
-              <PillLink to="/news">Join the Community</PillLink>
+              <PillLink to="/community">Join the Community</PillLink>
             </div>
           </Reveal>
         </div>

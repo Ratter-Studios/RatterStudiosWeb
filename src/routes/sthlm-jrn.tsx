@@ -8,7 +8,7 @@ import { ZoomableImage } from "@/components/zoomable-image";
 
 const keyart = websiteImg("webTitle.jpeg");
 
-export const Route = createFileRoute("/games")({
+export const Route = createFileRoute("/sthlm-jrn")({
   head: () => ({
     meta: [
       { title: "Järntorget - Ratter Studios" },
@@ -22,10 +22,10 @@ export const Route = createFileRoute("/games")({
         property: "og:description",
         content: "A cinematic narrative experience set in 1646 Stockholm. Coming soon.",
       },
-      { property: "og:url", content: "/games" },
+      { property: "og:url", content: "/sthlm-jrn" },
       { property: "og:type", content: "product" },
     ],
-    links: [{ rel: "canonical", href: "/games" }],
+    links: [{ rel: "canonical", href: "/sthlm-jrn" }],
     scripts: [
       {
         type: "application/ld+json",
