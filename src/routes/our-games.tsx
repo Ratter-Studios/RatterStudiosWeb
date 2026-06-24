@@ -63,7 +63,7 @@ function OurGamesPage() {
                 A historical narrative for PC
               </p>
               <p className="mt-6 leading-relaxed text-foreground/70">
-                Järntorget 17th century a maid's goal is to rebuild her life from the very bottom.
+                On Järntorget 17th century a maid's goal is to rebuild her life from the very bottom.
                 <br />
                 How will she handle stressful and tricky tasks in order to climb the human hierarchy?
               </p>
