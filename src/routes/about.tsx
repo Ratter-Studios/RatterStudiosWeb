@@ -40,10 +40,6 @@ function StoryPage() {
 
       <section className="mx-auto max-w-2xl space-y-8 px-6 pb-24 text-center text-lg leading-[1.85] text-foreground/75 md:px-8">
         <p className="enter" style={delay(450)}>
-          Ratter Studios
-          <br />
-          A small studio. A long memory.
-          <br />
           When the best of two worlds collided -historians- and
           <br />
           -game developers- Ratter Studios was born.
@@ -53,7 +49,11 @@ function StoryPage() {
           <br />
           The most extraordinary stories are already written, buried in the archives.
           <br />
+          <br />
           We started this journey to bring those unfiltered stories back to life and show how the past actually was: warm, complicated, alive, colourful and raw.
+          <br />
+          <br />
+          A small studio. A long memory.
         </p>
         <p className="enter font-display text-2xl italic text-primary" style={delay(650)}>
           We make history playable.

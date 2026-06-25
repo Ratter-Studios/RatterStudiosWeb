@@ -35,15 +35,12 @@ function OurGamesPage() {
         >
           Our <em className="text-primary">Games</em>
         </h1>
-        <p className="enter mt-8 text-lg leading-relaxed text-foreground/70" style={delay(420)}>
-          In our small team, we have started to craft Stockholm 1646: Järntorget.
-        </p>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-32 md:px-8">
         <Reveal>
           <div className="relative grid overflow-hidden rounded-2xl border border-border/50 bg-card md:grid-cols-[5fr_4fr]">
-            <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[28rem]">
+            <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[22rem]">
               <img
                 src={keyart}
                 alt="Stockholm 1646: Järntorget key art"
@@ -53,23 +50,16 @@ function OurGamesPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-card" />
             </div>
             <div className="relative flex flex-col p-8 md:p-12">
-              <p className="text-[0.7rem] uppercase tracking-[0.3em] text-primary/70">
-                Coming Soon
-              </p>
+              <p className="text-sm tracking-[0.04em] text-foreground/45">Demo Coming Soon</p>
               <h2 className="mt-6 font-display text-4xl font-medium leading-[1.02] md:text-5xl">
                 Stockholm 1646: <em className="text-primary">Järntorget</em>
               </h2>
-              <p className="mt-4 text-sm italic tracking-[0.04em] text-foreground/45">
-                A historical narrative for PC
-              </p>
               <p className="mt-6 leading-relaxed text-foreground/70">
-                On Järntorget 17th century a maid's goal is to rebuild her life from the very bottom.
-                <br />
-                How will she handle stressful and tricky tasks in order to climb the human hierarchy?
+                In our small team, we have started to craft a demo for Stockholm 1646: Järntorget.
               </p>
               <Link
                 to="/sthlm-jrn"
-                className="btn-ratter mt-auto self-start rounded-full px-5 py-2 text-xs tracking-[0.06em]"
+                className="btn-ratter mt-6 self-start rounded-full px-5 py-2 text-xs tracking-[0.06em]"
               >
                 View game
               </Link>

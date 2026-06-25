@@ -80,7 +80,7 @@ function CommunityPage() {
                 The <em className="text-primary">patrons</em>
               </h2>
               <div className="mt-8 flex items-start gap-3">
-                <PillLink href="https://patreon.com/RatterStudios">To Patreon</PillLink>
+                <PillLink href="https://patreon.com/RatterStudios">Join for Free</PillLink>
                 <QrButton file="patreon-qr.png" label="Patreon" />
               </div>
               <div className="mt-8 overflow-hidden rounded-xl border border-border/40 bg-background/40 p-3">
