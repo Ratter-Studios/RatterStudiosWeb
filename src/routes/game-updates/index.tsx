@@ -16,7 +16,7 @@ export const Route = createFileRoute("/game-updates/")({
       { property: "og:title", content: "Game Updates - Ratter Studios" },
       {
         property: "og:description",
-        content: "Development updates straight from the workshop.",
+        content: "Game Updates.",
       },
       { property: "og:url", content: "/game-updates" },
     ],

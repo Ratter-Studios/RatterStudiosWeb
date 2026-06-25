@@ -14,7 +14,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "Our Story - Ratter Studios" },
       {
         property: "og:description",
-        content: "An independent studio born from a love of history and the stories left untold.",
+        content: "A small studio. A long memory.",
       },
       { property: "og:url", content: "/about" },
     ],

@@ -25,7 +25,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Ratter Studios" },
       {
         property: "og:description",
-        content: "Independent game dev studio. Makers of Stockholm 1646.",
+        content: "Independent game dev studio.",
       },
       { property: "og:url", content: "/" },
     ],
@@ -173,7 +173,7 @@ function Index() {
               Walk with us <em className="text-primary">through 1646.</em>
             </h2>
             <p className="mt-5 max-w-md leading-relaxed text-foreground/65">
-              Follow the reclaiming of history on our social media, Discord and Patreon and 
+              Follow the reclaiming of history on our social media. Discord, Patreon and more. 
             </p>
             <div className="mt-8">
               <PillLink to="/community">Join the Community</PillLink>

@@ -19,10 +19,10 @@ export const Route = createFileRoute("/sthlm-jrn")({
         content:
           "Järntorget - our first playable history. A cinematic narrative experience set in 1646 Stockholm.",
       },
-      { property: "og:title", content: "Järntorget - Ratter Studios" },
+      { property: "og:title", content: "Stockholm 1646: Järntorget - Ratter Studios" },
       {
         property: "og:description",
-        content: "A cinematic narrative experience set in 1646 Stockholm. Coming soon.",
+        content: "Stockholm 1646: Järntorget",
       },
       { property: "og:url", content: "/sthlm-jrn" },
       { property: "og:type", content: "product" },

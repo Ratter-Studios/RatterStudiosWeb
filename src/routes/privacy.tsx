@@ -13,7 +13,7 @@ export const Route = createFileRoute("/privacy")({
       { property: "og:title", content: "Privacy Policy - Ratter Studios" },
       {
         property: "og:description",
-        content: "We do not collect, store, or process personal data from visitors to our website.",
+        content: "Privacy Policy",
       },
       { property: "og:url", content: "/privacy" },
     ],

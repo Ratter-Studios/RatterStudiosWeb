@@ -13,7 +13,7 @@ export const Route = createFileRoute("/community")({
       {
         name: "description",
         content:
-          "Join the Inner Circle. Behind-the-scenes research, early access, and the conversation around Järntorget.",
+          "Step inside the workshop.",
       },
       { property: "og:title", content: "The Inner Circle - Ratter Studios" },
       {
