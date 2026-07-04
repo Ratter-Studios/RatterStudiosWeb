@@ -7,7 +7,7 @@ import { DevLoginDialog } from "@/components/dev-login-dialog";
 const explore = [
   { to: "/", label: "Home" },
   { to: "/our-games", label: "Our Games" },
-  { to: "/about", label: "Our Story" },
+  { to: "/about", label: "About Us" },
   { to: "/game-updates", label: "Game Updates" },
   { to: "/community", label: "Community" },
 ] as const;

@@ -165,7 +165,7 @@ function Index() {
               -game developers- Ratter Studios was born....
             </p>
             <div className="mt-8">
-              <PillLink to="/about">Our story</PillLink>
+              <PillLink to="/about">About us</PillLink>
             </div>
           </Reveal>
           <Reveal delay={150}>

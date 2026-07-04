@@ -7,7 +7,7 @@ const wordmark = websiteImg("ratter-wordmark.png");
 const nav = [
   { to: "/", label: "Home" },
   { to: "/our-games", label: "Our Games" },
-  { to: "/about", label: "Our Story" },
+  { to: "/about", label: "About Us" },
   { to: "/game-updates", label: "Game Updates" },
   { to: "/community", label: "Community" },
 ] as const;
