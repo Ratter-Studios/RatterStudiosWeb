@@ -43,7 +43,7 @@ const executiveTeam: TeamMember[] = [
 
 const gameDevTeam: TeamMember[] = [
   { name: "Jamie Kofler", title: "Programmer, Tech Lead", image: websiteImg("JamieKImg.jpeg") },
-  { name: "Name", title: "Role" },
+  { name: "Leon Cederberg", title: "Designer, Narrative", image: websiteImg("LeonCImg.jpeg") },
   { name: "Name", title: "Role" },
   { name: "Name", title: "Role" },
 ];
