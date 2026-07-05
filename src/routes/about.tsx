@@ -49,7 +49,7 @@ const gameDevTeam: TeamMember[] = [
 ];
 
 const backEndTeam: TeamMember[] = [
-  { name: "Lily Clairevelle", title: "Fullstack developer", image: websiteImg("LilyWImg.jpeg") },
+  { name: "Lily Clairevelle", title: "Fullstack developer", image: websiteImg("LilyCImg.jpeg") },
   { name: "Name", title: "Role" },
   { name: "Name", title: "Role" },
 ];
