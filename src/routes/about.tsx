@@ -3,6 +3,7 @@ import type { CSSProperties } from "react";
 import { User } from "lucide-react";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
+import {websiteImg} from "@/lib/assets.ts";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -35,19 +36,20 @@ type TeamMember = {
 };
 
 const executiveTeam: TeamMember[] = [
-  { name: "Name", title: "Role" },
-  { name: "Name", title: "Role" },
+  { name: "Karin Hellqvist", title: "CEO, Historical lead" }, // add img
+  { name: "Makrina Hjälm Ellnemyr", title: "Deputy CEO, Historical lead" }, // add img
+  { name: "Daniel Björck", title: "Board Member" }, // add img
 ];
 
 const gameDevTeam: TeamMember[] = [
-  { name: "Name", title: "Role" },
+  { name: "Jamie Kofler", title: "Programmer, Tech Lead", image: websiteImg("JamieKImg.jpeg") },
   { name: "Name", title: "Role" },
   { name: "Name", title: "Role" },
   { name: "Name", title: "Role" },
 ];
 
 const backEndTeam: TeamMember[] = [
-  { name: "Name", title: "Role" },
+  { name: "Lily Clairevelle", title: "Fullstack developer", image: websiteImg("LilyWImg.jpeg") },
   { name: "Name", title: "Role" },
   { name: "Name", title: "Role" },
 ];
