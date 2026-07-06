@@ -36,7 +36,7 @@ type TeamMember = {
 };
 
 const executiveTeam: TeamMember[] = [
-  { name: "Karin Hellqvist", title: "CEO, Historical lead" }, // add img
+  { name: "Karin Hellqvist", title: "CEO, Historical lead", image: websiteImg("KarinHImg.jpeg") },
   { name: "Makrina Hjälm Ellnemyr", title: "Deputy CEO, Historical lead" }, // add img
   { name: "Daniel Björck", title: "Board Member" }, // add img
 ];
