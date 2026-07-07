@@ -33,12 +33,14 @@ type TeamMember = {
   title: string;
   /** Portrait in /public/website. Leave undefined for a placeholder icon. */
   image?: string;
+  /** Optional small third line (used by Executive Team for contact email). */
+  email?: string;
 };
 
 const executiveTeam: TeamMember[] = [
-  { name: "Karin Hellqvist", title: "CEO, Historical lead", image: websiteImg("KarinHImg.jpeg") },
-  { name: "Makrina Hjälm Ellnemyr", title: "Deputy CEO, Historical lead" }, // add img
-  { name: "Daniel Björck", title: "Board Member" }, // add img
+  { name: "Karin Hellqvist", title: "CEO, Historical lead", image: websiteImg("KarinHImg.jpeg"), email: "karin.hellqvist@ratterstudios.com" },
+  { name: "Makrina Hjälm Ellnemyr", title: "Deputy CEO, Historical lead", email: "makrina.ellnemyr@ratterstudios.com" }, // add img
+  { name: "Daniel Björck", title: "Board Member", email: "" }, // add img
 ];
 
 const gameDevTeam: TeamMember[] = [
@@ -76,6 +78,11 @@ function TeamCard({ member }: { member: TeamMember }) {
           {member.name}
         </p>
         <p className="mt-1 text-sm tracking-[0.02em] text-primary/80">{member.title}</p>
+        {member.email && (
+          <p className="mt-1 text-xs" style={{ color: "oklch(0.67 0.028 80)" }}>
+            {member.email}
+          </p>
+        )}
       </div>
     </div>
   );
