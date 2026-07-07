@@ -38,13 +38,13 @@ type TeamMember = {
 };
 
 const executiveTeam: TeamMember[] = [
-  { name: "Karin Hellqvist", title: "CEO, Historical lead", image: websiteImg("KarinHImg.jpeg"), email: "karin.hellqvist@ratterstudios.com" },
+  { name: "Karin Hellqvist", title: "CEO, Historical lead", email: "karin.hellqvist@ratterstudios.com", image: websiteImg("KarinHImg.jpeg") },
   { name: "Makrina Hjälm Ellnemyr", title: "Deputy CEO, Historical lead", email: "makrina.ellnemyr@ratterstudios.com" }, // add img
   { name: "Daniel Björck", title: "Board Member", email: "" }, // add img
 ];
 
 const gameDevTeam: TeamMember[] = [
-  { name: "Jamie Kofler", title: "Programmer, Tech Lead", image: websiteImg("JamieKImg.jpeg") },
+  { name: "Jamie Kofler", title: "Programmer, Tech Lead", email: "koflerjamie@gmail.com", image: websiteImg("JamieKImg.jpeg") },
   { name: "Leon Cederberg", title: "Designer, Narrative", image: websiteImg("LeonCImg.jpeg") },
   { name: "Patric Svedberg", title: "Animator" }, // add img
   { name: "Max Onryd", title: "3D Artist" }, // add img
@@ -52,7 +52,7 @@ const gameDevTeam: TeamMember[] = [
 
 const backEndTeam: TeamMember[] = [
   { name: "Lily Clairevelle", title: "Fullstack developer", image: websiteImg("LilyCImg.jpeg") },
-  { name: "Linda Winther", title: "Fullstack developer" }, // add img
+  { name: "Linda Winther", title: "Backend developer", image: websiteImg("LindaWImg.jpeg") },
   { name: "Name", title: "Role" }, // add img
 ];
 
