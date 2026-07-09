@@ -48,6 +48,7 @@ const gameDevTeam: TeamMember[] = [
   { name: "Leon Cederberg", title: "Designer, Narrative", image: websiteImg("LeonCImg.jpeg") },
   { name: "Patric Svedberg", title: "Animator" }, // add img
   { name: "Max Onryd", title: "3D Artist" }, // add img
+  { name: "Aryna", title: "3D Artist" }, // add img
 ];
 
 const backEndTeam: TeamMember[] = [
