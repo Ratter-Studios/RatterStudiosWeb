@@ -54,7 +54,7 @@ const gameDevTeam: TeamMember[] = [
 const backEndTeam: TeamMember[] = [
   { name: "Lily Clairevelle", title: "Fullstack developer", image: websiteImg("LilyCImg.jpeg") },
   { name: "Linda Winther", title: "Backend developer", image: websiteImg("LindaWImg.jpeg") },
-  { name: "Name", title: "Role" }, // add img
+  { name: "Henrik Göransson", title: "MLOps Engineer", image: websiteImg("HenrikGImg.jpeg") },
 ];
 
 function TeamCard({ member }: { member: TeamMember }) {
