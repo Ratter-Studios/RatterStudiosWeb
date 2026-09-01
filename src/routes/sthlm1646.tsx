@@ -10,31 +10,31 @@ import { cn } from "@/lib/utils";
 
 const keyart = websiteImg("webTitle.jpeg");
 
-export const Route = createFileRoute("/sthlm-jrn")({
+export const Route = createFileRoute("/sthlm1646")({
   head: () => ({
     meta: [
-      { title: "Järntorget - Ratter Studios" },
+      { title: "Stockholm1646 - Ratter Studios" },
       {
         name: "description",
         content:
-          "Järntorget - our first playable history. A cinematic narrative experience set in 1646 Stockholm.",
+          "Stockholm1646 - our first playable history. A cinematic narrative experience set in 1646 Stockholm.",
       },
-      { property: "og:title", content: "Stockholm 1646: Järntorget - Ratter Studios" },
+      { property: "og:title", content: "Stockholm1646 - Ratter Studios" },
       {
         property: "og:description",
-        content: "Stockholm 1646: Järntorget",
+        content: "Stockholm1646",
       },
-      { property: "og:url", content: "/sthlm-jrn" },
+      { property: "og:url", content: "/sthlm1646" },
       { property: "og:type", content: "product" },
     ],
-    links: [{ rel: "canonical", href: "/sthlm-jrn" }],
+    links: [{ rel: "canonical", href: "/sthlm1646" }],
     scripts: [
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "VideoGame",
-          name: "Järntorget",
+          name: "Stockholm1646",
           publisher: { "@type": "Organization", name: "Ratter Studios" },
           gamePlatform: ["PC"],
           genre: ["Narrative", "Historical", "Adventure"],
@@ -142,7 +142,7 @@ function GamesPage() {
                 className="enter font-display text-5xl font-medium leading-[1.05] text-foreground md:text-6xl lg:text-7xl"
                 style={delay(250)}
               >
-                Stockholm 1646: <em className="text-primary">Järntorget</em>
+                Stockholm<em className="text-primary">1646</em>
               </h1>
               <p
                 className="enter mt-10 max-w-2xl text-lg leading-relaxed text-foreground/75"
@@ -169,7 +169,7 @@ function GamesPage() {
                     <Reveal key={i} delay={i * 120}>
                       <ZoomableImage
                         src={src}
-                        alt={`Järntorget concept art ${i + 1}`}
+                        alt={`Stockholm1646 concept art ${i + 1}`}
                         className="aspect-[4/5] overflow-hidden rounded-2xl border border-border/50 bg-card"
                       />
                     </Reveal>

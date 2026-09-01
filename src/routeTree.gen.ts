@@ -9,7 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SthlmJrnRouteImport } from './routes/sthlm-jrn'
+import { Route as Sthlm1646RouteImport } from './routes/sthlm1646'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as OurGamesRouteImport } from './routes/our-games'
 import { Route as CommunityRouteImport } from './routes/community'
@@ -18,9 +18,9 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as GameUpdatesIndexRouteImport } from './routes/game-updates/index'
 import { Route as GameUpdatesSlugRouteImport } from './routes/game-updates/$slug'
 
-const SthlmJrnRoute = SthlmJrnRouteImport.update({
-  id: '/sthlm-jrn',
-  path: '/sthlm-jrn',
+const Sthlm1646Route = Sthlm1646RouteImport.update({
+  id: '/sthlm1646',
+  path: '/sthlm1646',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -65,7 +65,7 @@ export interface FileRoutesByFullPath {
   '/community': typeof CommunityRoute
   '/our-games': typeof OurGamesRoute
   '/privacy': typeof PrivacyRoute
-  '/sthlm-jrn': typeof SthlmJrnRoute
+  '/sthlm1646': typeof Sthlm1646Route
   '/game-updates/$slug': typeof GameUpdatesSlugRoute
   '/game-updates/': typeof GameUpdatesIndexRoute
 }
@@ -75,7 +75,7 @@ export interface FileRoutesByTo {
   '/community': typeof CommunityRoute
   '/our-games': typeof OurGamesRoute
   '/privacy': typeof PrivacyRoute
-  '/sthlm-jrn': typeof SthlmJrnRoute
+  '/sthlm1646': typeof Sthlm1646Route
   '/game-updates/$slug': typeof GameUpdatesSlugRoute
   '/game-updates': typeof GameUpdatesIndexRoute
 }
@@ -86,7 +86,7 @@ export interface FileRoutesById {
   '/community': typeof CommunityRoute
   '/our-games': typeof OurGamesRoute
   '/privacy': typeof PrivacyRoute
-  '/sthlm-jrn': typeof SthlmJrnRoute
+  '/sthlm1646': typeof Sthlm1646Route
   '/game-updates/$slug': typeof GameUpdatesSlugRoute
   '/game-updates/': typeof GameUpdatesIndexRoute
 }
@@ -98,7 +98,7 @@ export interface FileRouteTypes {
     | '/community'
     | '/our-games'
     | '/privacy'
-    | '/sthlm-jrn'
+    | '/sthlm1646'
     | '/game-updates/$slug'
     | '/game-updates/'
   fileRoutesByTo: FileRoutesByTo
@@ -108,7 +108,7 @@ export interface FileRouteTypes {
     | '/community'
     | '/our-games'
     | '/privacy'
-    | '/sthlm-jrn'
+    | '/sthlm1646'
     | '/game-updates/$slug'
     | '/game-updates'
   id:
@@ -118,7 +118,7 @@ export interface FileRouteTypes {
     | '/community'
     | '/our-games'
     | '/privacy'
-    | '/sthlm-jrn'
+    | '/sthlm1646'
     | '/game-updates/$slug'
     | '/game-updates/'
   fileRoutesById: FileRoutesById
@@ -129,18 +129,18 @@ export interface RootRouteChildren {
   CommunityRoute: typeof CommunityRoute
   OurGamesRoute: typeof OurGamesRoute
   PrivacyRoute: typeof PrivacyRoute
-  SthlmJrnRoute: typeof SthlmJrnRoute
+  Sthlm1646Route: typeof Sthlm1646Route
   GameUpdatesSlugRoute: typeof GameUpdatesSlugRoute
   GameUpdatesIndexRoute: typeof GameUpdatesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sthlm-jrn': {
-      id: '/sthlm-jrn'
-      path: '/sthlm-jrn'
-      fullPath: '/sthlm-jrn'
-      preLoaderRoute: typeof SthlmJrnRouteImport
+    '/sthlm1646': {
+      id: '/sthlm1646'
+      path: '/sthlm1646'
+      fullPath: '/sthlm1646'
+      preLoaderRoute: typeof Sthlm1646RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -201,7 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   CommunityRoute: CommunityRoute,
   OurGamesRoute: OurGamesRoute,
   PrivacyRoute: PrivacyRoute,
-  SthlmJrnRoute: SthlmJrnRoute,
+  Sthlm1646Route: Sthlm1646Route,
   GameUpdatesSlugRoute: GameUpdatesSlugRoute,
   GameUpdatesIndexRoute: GameUpdatesIndexRoute,
 }

@@ -43,7 +43,7 @@ function OurGamesPage() {
             <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[22rem]">
               <img
                 src={keyart}
-                alt="Stockholm 1646: Järntorget key art"
+                alt="Stockholm1646 key art"
                 loading="lazy"
                 className="absolute inset-0 h-full w-full object-cover"
               />
@@ -52,13 +52,13 @@ function OurGamesPage() {
             <div className="relative flex flex-col p-8 md:p-12">
               <p className="text-sm tracking-[0.04em] text-foreground/45">Demo Coming Soon</p>
               <h2 className="mt-6 font-display text-4xl font-medium leading-[1.02] md:text-5xl">
-                Stockholm 1646: <em className="text-primary">Järntorget</em>
+                Stockholm<em className="text-primary">1646</em>
               </h2>
               <p className="mt-6 leading-relaxed text-foreground/70">
-                In our small team, we have started to craft a demo for Stockholm 1646: Järntorget.
+                In our small team, we have started to craft a demo for Stockholm1646.
               </p>
               <Link
-                to="/sthlm-jrn"
+                to="/sthlm1646"
                 className="btn-ratter mt-6 self-start rounded-full px-5 py-2 text-xs tracking-[0.06em]"
               >
                 View game

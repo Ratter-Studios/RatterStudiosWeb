@@ -19,7 +19,7 @@ export const Route = createFileRoute("/community")({
       {
         property: "og:description",
         content:
-          "Behind-the-scenes research, early access, and the conversation around Järntorget.",
+          "Behind-the-scenes research, early access, and the conversation around Stockholm1646.",
       },
       { property: "og:url", content: "/community" },
     ],

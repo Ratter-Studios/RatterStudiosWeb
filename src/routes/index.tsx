@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Ratter Studios is an independent game dev studio. Makers of Stockholm 1646, a historical narrative game series set in 17th-century Sweden.",
+          "Ratter Studios is an independent game dev studio. Makers of Stockholm1646, a historical narrative game series set in 17th-century Sweden.",
       },
       { property: "og:title", content: "Ratter Studios" },
       {
@@ -111,7 +111,7 @@ function Index() {
             <SectionHeading
               title={
                 <>
-                  Stockholm 1646: <em className="text-primary">Järntorget</em>
+                  Stockholm<em className="text-primary">1646</em>
                 </>
               }
             />
@@ -124,7 +124,7 @@ function Index() {
               How will she handle stressful and tricky tasks in order to climb the human hierarchy?
             </p>
             <div className="mt-10">
-              <PillLink to="/sthlm-jrn">View Game</PillLink>
+              <PillLink to="/sthlm1646">View Game</PillLink>
             </div>
           </Reveal>
 
@@ -132,14 +132,14 @@ function Index() {
             <div className="grid grid-cols-2 gap-3">
               <ZoomableImage
                 src={shot1}
-                alt="Järntorget concept 1"
+                alt="Stockholm1646 concept 1"
                 className="col-span-2 aspect-video overflow-hidden rounded-2xl border border-border/50"
               />
               {[shot2, shot3].map((src, i) => (
                 <ZoomableImage
                   key={i}
                   src={src}
-                  alt={`Järntorget concept ${i + 2}`}
+                  alt={`Stockholm1646 concept ${i + 2}`}
                   className="aspect-square overflow-hidden rounded-2xl border border-border/50"
                 />
               ))}

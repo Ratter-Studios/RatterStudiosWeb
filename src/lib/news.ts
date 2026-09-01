@@ -10,7 +10,7 @@ export const news: NewsPost[] = [
   {
     slug: "stockholm-1646-announced",
     date: "2026-05-12",
-    title: "Stockholm 1646 - Officially Announced",
+    title: "Stockholm1646 - Officially Announced",
     excerpt:
       "Today we're lifting the veil on our debut title: a historical narrative set in the candlelit streets of 17th-century Stockholm.",
     tag: "Announcement",
@@ -34,7 +34,7 @@ export const news: NewsPost[] = [
   {
     slug: "soundtrack-teaser",
     date: "2026-06-03",
-    title: "First Listen - Stockholm 1646 Main Theme",
+    title: "First Listen - Stockholm1646 Main Theme",
     excerpt:
       "Composer Elsa Lindgren shares a short excerpt of the main theme: nyckelharpa, low strings, and silence.",
     tag: "Audio",
