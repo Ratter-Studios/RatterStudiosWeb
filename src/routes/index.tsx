@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Ratter Studios is an independent game dev studio. Makers of Stockholm1646, a historical narrative game series set in 17th-century Sweden.",
+          "Ratter Studios is an independent game dev studio. Makers of Stockholm1646, a historical RPG series set in 17th-century Sweden.",
       },
       { property: "og:title", content: "Ratter Studios" },
       {
@@ -116,7 +116,7 @@ function Index() {
               }
             />
             <p className="mt-4 text-sm italic tracking-[0.04em] text-foreground/45">
-              A historical narrative for PC
+              A historical RPG for PC
             </p>
             <p className="mt-8 max-w-lg leading-relaxed text-foreground/70">
               On Järntorget 17th century a maid's goal is to rebuild her life from the very bottom.

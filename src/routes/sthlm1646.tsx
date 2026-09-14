@@ -17,7 +17,7 @@ export const Route = createFileRoute("/sthlm1646")({
       {
         name: "description",
         content:
-          "Stockholm1646 - our first playable history. A cinematic narrative experience set in 1646 Stockholm.",
+          "Stockholm1646 - our first playable history. A cinematic historical RPG set in 1646 Stockholm.",
       },
       { property: "og:title", content: "Stockholm1646 - Ratter Studios" },
       {
@@ -37,7 +37,7 @@ export const Route = createFileRoute("/sthlm1646")({
           name: "Stockholm1646",
           publisher: { "@type": "Organization", name: "Ratter Studios" },
           gamePlatform: ["PC"],
-          genre: ["Narrative", "Historical", "Adventure"],
+          genre: ["Historical", "RPG"],
         }),
       },
     ],
@@ -51,7 +51,7 @@ const shots = ["webTitle", "devCapture1", "devCapture2", "devCapture3", "devCapt
 
 const facts = [
   { label: "Setting", value: "Stockholm, 1646" },
-  { label: "Genre", value: "Historical Narrative" },
+  { label: "Genre", value: "Historical RPG" },
   { label: "Platform", value: "PC" },
   { label: "Engine", value: "Unreal Engine v5.8+" },
   { label: "Language", value: "C++" },
