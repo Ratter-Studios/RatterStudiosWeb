@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "stockholm1646-downloads",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+  // Served at https://stockholm1646-downloads.ratterstudios.workers.dev
+  "workers_dev": true,
+  // Logs in the Cloudflare dashboard
+  "observability": { "enabled": true },
+}

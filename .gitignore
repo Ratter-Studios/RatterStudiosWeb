@@ -70,6 +70,7 @@ _site/
 .next/
 .nuxt/
 .output/
+.wrangler/
 
 # Test and coverage output
 coverage/

@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, type CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
+import { ChevronDown, Download } from "lucide-react";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
@@ -58,6 +59,70 @@ const facts = [
   { label: "Status", value: "In Development" },
 ];
 
+// Builds are read live from the GitHub releases; split ones are joined by workers/downloads.
+const BUILDS_RELEASES = "https://github.com/Ratter-Studios/Stockholm1646-Builds/releases";
+const DOWNLOADS_WORKER = "https://stockholm1646-downloads.ratterstudios.workers.dev";
+const MAX_BUILDS = 3;
+
+type Build = { file: string; size: number; url: string };
+type Release = {
+  tag_name: string;
+  draft: boolean;
+  published_at: string | null;
+  assets: { name: string; size: number; browser_download_url: string }[];
+};
+
+/** Release files as downloads, newest first, split parts merged. */
+function toBuilds(releases: Release[]): Build[] {
+  return releases
+    .filter((release) => !release.draft && release.published_at)
+    .sort((a, b) => Date.parse(b.published_at ?? "") - Date.parse(a.published_at ?? ""))
+    .flatMap((release) => {
+      const files = new Map<string, Build>();
+      for (const asset of release.assets) {
+        const file = asset.name.replace(/\.\d{3}$/, ""); // "x.zip.001" -> "x.zip"
+        const build = files.get(file);
+        if (build) build.size += asset.size;
+        else
+          files.set(file, {
+            file,
+            size: asset.size,
+            url:
+              file === asset.name
+                ? asset.browser_download_url
+                : `${DOWNLOADS_WORKER}/${release.tag_name}/${file}`,
+          });
+      }
+      return [...files.values()];
+    });
+}
+
+const formatSize = (bytes: number) =>
+  bytes >= 1024 ** 3
+    ? `${(bytes / 1024 ** 3).toFixed(2)} GB`
+    : `${Math.round(bytes / 1024 ** 2)} MB`;
+
+/** undefined = loading, "error" = GitHub unreachable. */
+function usePlaytestBuilds() {
+  const [builds, setBuilds] = useState<Build[] | "error">();
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch("https://api.github.com/repos/Ratter-Studios/Stockholm1646-Builds/releases", {
+      signal: controller.signal,
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`GitHub answered ${res.status}`);
+        return res.json() as Promise<Release[]>;
+      })
+      .then((releases) => setBuilds(toBuilds(releases)))
+      .catch(() => {
+        if (!controller.signal.aborted) setBuilds("error");
+      });
+    return () => controller.abort();
+  }, []);
+  return builds;
+}
+
 const delay = (ms: number) => ({ "--enter-delay": `${ms}ms` }) as CSSProperties;
 
 function GamesPage() {
@@ -74,8 +139,10 @@ function GamesPage() {
 
         <div className="relative mx-auto max-w-6xl px-6 pb-32 pt-44 md:px-8 md:pt-52">
           <div className="grid gap-10 md:grid-cols-[15rem_1fr] md:gap-14 lg:grid-cols-[17rem_1fr] lg:gap-20">
-            {/* Sticky dossier panel - stays beside the content while scrolling */}
-            <aside className="enter md:sticky md:top-28 md:self-start" style={delay(150)}>
+            {/* Sticky dossier panels - stay beside the content while scrolling */}
+            <aside className="enter space-y-5 md:sticky md:top-28 md:self-start" style={delay(150)}>
+              <PlaytestBuilds />
+
               <div className="rounded-2xl border border-border/50 bg-card p-6 shadow-xl shadow-black/40 md:p-7">
                 <dl className="space-y-5">
                   {facts.map((fact) => (
@@ -181,5 +248,100 @@ function GamesPage() {
         </div>
       </section>
     </SiteLayout>
+  );
+}
+
+/** Collapsible playtest builds panel. */
+function PlaytestBuilds() {
+  const [open, setOpen] = useState(false);
+  const builds = usePlaytestBuilds();
+
+  return (
+    <div className="rounded-2xl border border-border/50 bg-card shadow-xl shadow-black/40">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-controls="playtest-builds"
+        className="group flex w-full items-center justify-between gap-4 rounded-2xl p-6 text-left md:p-7"
+      >
+        <span className="font-display text-xl font-medium text-primary/90">Playtest builds</span>
+        <ChevronDown
+          aria-hidden
+          strokeWidth={1.75}
+          className={cn(
+            "h-5 w-5 shrink-0 text-primary/70 transition-[color,rotate] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-primary",
+            open && "rotate-180",
+          )}
+        />
+      </button>
+
+      {/* inert: no tabbing into hidden links */}
+      <div
+        id="playtest-builds"
+        inert={!open}
+        className={cn(
+          "grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+        )}
+      >
+        <div className="overflow-hidden">
+          <div className="mx-6 mb-6 border-t border-border/50 pt-6 md:mx-7 md:mb-7">
+            <BuildList builds={builds} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const linkClasses =
+  "text-primary underline underline-offset-2 transition-colors hover:text-primary/80";
+
+/** Loading, error or the list of downloads. */
+function BuildList({ builds }: { builds: Build[] | "error" | undefined }) {
+  if (builds === undefined) return <p className="text-sm text-foreground/45">Loading builds…</p>;
+  if (builds === "error") {
+    return (
+      <p className="text-sm leading-relaxed text-foreground/45">
+        Couldn't load the builds right now.{" "}
+        <a href={BUILDS_RELEASES} target="_blank" rel="noreferrer" className={linkClasses}>
+          See them on GitHub
+        </a>
+      </p>
+    );
+  }
+  if (builds.length === 0) return <p className="text-sm text-foreground/45">No builds yet.</p>;
+
+  return (
+    <>
+      <ul className="space-y-6">
+        {builds.slice(0, MAX_BUILDS).map((build) => (
+          <li key={build.url}>
+            <p className="font-display text-lg font-medium text-primary/90 [overflow-wrap:anywhere]">
+              {build.file}
+            </p>
+            <p className="mt-1 text-sm tracking-[0.04em] text-foreground/45">
+              {formatSize(build.size)}
+            </p>
+            {/* Same tab: the download starts without leaving the page */}
+            <a href={build.url} className={cn(pillClasses, "mt-4 gap-2")}>
+              <Download aria-hidden className="h-3.5 w-3.5" strokeWidth={1.75} />
+              Download
+            </a>
+          </li>
+        ))}
+      </ul>
+      {builds.length > MAX_BUILDS && (
+        <a
+          href={BUILDS_RELEASES}
+          target="_blank"
+          rel="noreferrer"
+          className={cn(linkClasses, "mt-6 inline-block text-sm")}
+        >
+          Older builds on GitHub
+        </a>
+      )}
+    </>
   );
 }
