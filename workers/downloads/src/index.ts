@@ -1,4 +1,7 @@
-// GET /<tag>/<file>: joins the release's <file>.001, .002, ... into one download.
+// GET /<tag>/<file>: streams a release file (or its .001, .002, ... parts) as one download.
+// GET /counts: completed downloads per "<tag>/<file>".
+
+import { DurableObject } from "cloudflare:workers";
 
 const RELEASES = "https://github.com/Ratter-Studios/Stockholm1646-Builds/releases/download";
 
@@ -9,14 +12,34 @@ const MAX_PARTS = 12;
 const SAFE_NAME = /^[\w-][\w.-]*$/;
 
 type Part = { url: string; start: number; size: number; version: string; modified: number };
+type Env = { COUNTER: DurableObjectNamespace<DownloadCounter> };
+
+/** Completed-download counts, stored in one Durable Object. */
+export class DownloadCounter extends DurableObject<Env> {
+  async increment(key: string) {
+    await this.ctx.storage.put(key, ((await this.ctx.storage.get<number>(key)) ?? 0) + 1);
+  }
+
+  async all() {
+    return Object.fromEntries(await this.ctx.storage.list<number>());
+  }
+}
+
+const counter = (env: Env) => env.COUNTER.getByName("downloads");
 
 export default {
-  async fetch(request, _env, ctx) {
+  async fetch(request, env, ctx) {
     if (request.method !== "GET" && request.method !== "HEAD") {
       return new Response("Method not allowed", { status: 405, headers: { Allow: "GET, HEAD" } });
     }
 
     const segments = new URL(request.url).pathname.split("/").filter(Boolean);
+    if (segments.length === 1 && segments[0] === "counts") {
+      return Response.json(await counter(env).all(), {
+        headers: { "Access-Control-Allow-Origin": "*", "Cache-Control": "no-store" },
+      });
+    }
+
     const [tag, file] = segments;
     if (segments.length !== 2 || !SAFE_NAME.test(tag) || !SAFE_NAME.test(file)) {
       return new Response("Not found", { status: 404 });
@@ -31,7 +54,7 @@ export default {
         status: 502,
       });
     }
-    if (parts.length === 0) return Response.redirect(`${RELEASES}/${tag}/${file}`, 302);
+    if (parts.length === 0) return new Response("Not found", { status: 404 });
 
     const total = parts.reduce((sum, part) => sum + part.size, 0);
     const etag = `"${await digest(parts.map((part) => `${part.version}:${part.size}`).join("|"))}"`;
@@ -67,39 +90,54 @@ export default {
     const status = headers.has("Content-Range") ? 206 : 200;
     if (request.method === "HEAD") return new Response(null, { status, headers });
 
+    // Counted once the last byte is sent; the 10% minimum ignores small tail requests.
+    const counted = end === total - 1 && length >= total / 10;
+
     // Native pipe (no CPU time) that errors instead of ending short.
     const { readable, writable } = new FixedLengthStream(length);
     ctx.waitUntil(
-      streamParts(parts, start, end, writable).catch(async (err) => {
-        console.error(err);
-        await writable.abort(err).catch(() => {});
-      }),
+      streamParts(parts, start, end, writable)
+        .then(async () => {
+          if (counted) await counter(env).increment(`${tag}/${file}`);
+        })
+        .catch(async (err) => {
+          console.error(err);
+          await writable.abort(err).catch(() => {});
+        }),
     );
     return new Response(readable, { status, headers });
   },
-} satisfies ExportedHandler;
+} satisfies ExportedHandler<Env>;
 
-/** Finds <file>.001, .002, ... (empty if not split). */
+/** The file's parts: <file>.001, .002, ... or the file itself if it isn't split. */
 async function findParts(tag: string, file: string): Promise<Part[]> {
   const parts: Part[] = [];
   for (let n = 1, start = 0; ; n++) {
-    const url = `${RELEASES}/${tag}/${file}.${String(n).padStart(3, "0")}`;
-    const res = await fetch(url, { method: "HEAD" });
-    if (res.status === 404) return parts;
-    if (!res.ok) throw new Error(`GitHub answered ${res.status} for ${url}`);
+    const part = await probe(`${RELEASES}/${tag}/${file}.${String(n).padStart(3, "0")}`, start);
+    if (!part) break;
     if (n > MAX_PARTS) throw new Error(`${file} has more than ${MAX_PARTS} parts`);
-
-    const size = Number(res.headers.get("Content-Length"));
-    if (!Number.isSafeInteger(size) || size <= 0) throw new Error(`No size for ${url}`);
-    parts.push({
-      url,
-      start,
-      size,
-      version: res.headers.get("ETag") ?? "",
-      modified: Date.parse(res.headers.get("Last-Modified") ?? "") || 0,
-    });
-    start += size;
+    parts.push(part);
+    start += part.size;
   }
+  if (parts.length > 0) return parts;
+  const whole = await probe(`${RELEASES}/${tag}/${file}`, 0);
+  return whole ? [whole] : [];
+}
+
+/** Size and version of one release file, or null if it doesn't exist. */
+async function probe(url: string, start: number): Promise<Part | null> {
+  const res = await fetch(url, { method: "HEAD" });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`GitHub answered ${res.status} for ${url}`);
+  const size = Number(res.headers.get("Content-Length"));
+  if (!Number.isSafeInteger(size) || size <= 0) throw new Error(`No size for ${url}`);
+  return {
+    url,
+    start,
+    size,
+    version: res.headers.get("ETag") ?? "",
+    modified: Date.parse(res.headers.get("Last-Modified") ?? "") || 0,
+  };
 }
 
 /** Single "bytes=a-b" range; null = send the whole file. */

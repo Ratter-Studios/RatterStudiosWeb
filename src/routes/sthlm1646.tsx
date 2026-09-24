@@ -59,17 +59,17 @@ const facts = [
   { label: "Status", value: "In Development" },
 ];
 
-// Builds are read live from the GitHub releases; split ones are joined by workers/downloads.
+// Builds come live from the GitHub releases; downloads and counts go through workers/downloads.
 const BUILDS_RELEASES = "https://github.com/Ratter-Studios/Stockholm1646-Builds/releases";
 const DOWNLOADS_WORKER = "https://stockholm1646-downloads.ratterstudios.workers.dev";
 const MAX_BUILDS = 3;
 
-type Build = { file: string; size: number; url: string };
+type Build = { tag: string; file: string; size: number };
 type Release = {
   tag_name: string;
   draft: boolean;
   published_at: string | null;
-  assets: { name: string; size: number; browser_download_url: string }[];
+  assets: { name: string; size: number }[];
 };
 
 /** Release files as downloads, newest first, split parts merged. */
@@ -83,15 +83,7 @@ function toBuilds(releases: Release[]): Build[] {
         const file = asset.name.replace(/\.\d{3}$/, ""); // "x.zip.001" -> "x.zip"
         const build = files.get(file);
         if (build) build.size += asset.size;
-        else
-          files.set(file, {
-            file,
-            size: asset.size,
-            url:
-              file === asset.name
-                ? asset.browser_download_url
-                : `${DOWNLOADS_WORKER}/${release.tag_name}/${file}`,
-          });
+        else files.set(file, { tag: release.tag_name, file, size: asset.size });
       }
       return [...files.values()];
     });
@@ -121,6 +113,20 @@ function usePlaytestBuilds() {
     return () => controller.abort();
   }, []);
   return builds;
+}
+
+/** Completed downloads per "<tag>/<file>"; undefined until loaded (or if unavailable). */
+function useDownloadCounts() {
+  const [counts, setCounts] = useState<Record<string, number>>();
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch(`${DOWNLOADS_WORKER}/counts`, { signal: controller.signal })
+      .then((res) => (res.ok ? (res.json() as Promise<Record<string, number>>) : undefined))
+      .then(setCounts)
+      .catch(() => {});
+    return () => controller.abort();
+  }, []);
+  return counts;
 }
 
 const delay = (ms: number) => ({ "--enter-delay": `${ms}ms` }) as CSSProperties;
@@ -255,6 +261,7 @@ function GamesPage() {
 function PlaytestBuilds() {
   const [open, setOpen] = useState(false);
   const builds = usePlaytestBuilds();
+  const counts = useDownloadCounts();
 
   return (
     <div className="rounded-2xl border border-border/50 bg-card shadow-xl shadow-black/40">
@@ -287,7 +294,7 @@ function PlaytestBuilds() {
       >
         <div className="overflow-hidden">
           <div className="mx-6 mb-6 border-t border-border/50 pt-6 md:mx-7 md:mb-7">
-            <BuildList builds={builds} />
+            <BuildList builds={builds} counts={counts} />
           </div>
         </div>
       </div>
@@ -299,7 +306,13 @@ const linkClasses =
   "text-primary underline underline-offset-2 transition-colors hover:text-primary/80";
 
 /** Loading, error or the list of downloads. */
-function BuildList({ builds }: { builds: Build[] | "error" | undefined }) {
+function BuildList({
+  builds,
+  counts,
+}: {
+  builds: Build[] | "error" | undefined;
+  counts: Record<string, number> | undefined;
+}) {
   if (builds === undefined) return <p className="text-sm text-foreground/45">Loading builds…</p>;
   if (builds === "error") {
     return (
@@ -316,21 +329,37 @@ function BuildList({ builds }: { builds: Build[] | "error" | undefined }) {
   return (
     <>
       <ul className="space-y-6">
-        {builds.slice(0, MAX_BUILDS).map((build) => (
-          <li key={build.url}>
-            <p className="font-display text-lg font-medium text-primary/90 [overflow-wrap:anywhere]">
-              {build.file}
-            </p>
-            <p className="mt-1 text-sm tracking-[0.04em] text-foreground/45">
-              {formatSize(build.size)}
-            </p>
-            {/* Same tab: the download starts without leaving the page */}
-            <a href={build.url} className={cn(pillClasses, "mt-4 gap-2")}>
-              <Download aria-hidden className="h-3.5 w-3.5" strokeWidth={1.75} />
-              Download
-            </a>
-          </li>
-        ))}
+        {builds.slice(0, MAX_BUILDS).map((build) => {
+          const key = `${build.tag}/${build.file}`;
+          return (
+            <li key={key}>
+              <p className="font-display text-lg font-medium text-primary/90 [overflow-wrap:anywhere]">
+                {build.file}
+              </p>
+              <p className="mt-1 text-sm tracking-[0.04em] text-foreground/45">
+                {build.tag === builds[0].tag && "Latest - "}
+                {formatSize(build.size)}
+              </p>
+              <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
+                {/* Same tab: the download starts without leaving the page */}
+                <a href={`${DOWNLOADS_WORKER}/${key}`} className={cn(pillClasses, "gap-2")}>
+                  <Download aria-hidden className="h-3.5 w-3.5" strokeWidth={1.75} />
+                  Download
+                </a>
+                {counts && (
+                  <span
+                    title="Completed downloads"
+                    className="inline-flex items-center gap-1 text-xs tabular-nums text-foreground/45"
+                  >
+                    {(counts[key] ?? 0).toLocaleString("en")}
+                    <Download aria-hidden className="h-3 w-3" strokeWidth={1.75} />
+                    <span className="sr-only"> completed downloads</span>
+                  </span>
+                )}
+              </div>
+            </li>
+          );
+        })}
       </ul>
       {builds.length > MAX_BUILDS && (
         <a

@@ -7,4 +7,7 @@
   "workers_dev": true,
   // Logs in the Cloudflare dashboard
   "observability": { "enabled": true },
+  // Download counter
+  "durable_objects": { "bindings": [{ "name": "COUNTER", "class_name": "DownloadCounter" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["DownloadCounter"] }],
 }
