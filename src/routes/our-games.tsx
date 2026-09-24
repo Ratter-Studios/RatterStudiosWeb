@@ -2,9 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import type { CSSProperties } from "react";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
-import { websiteImg } from "@/lib/assets";
-
-const keyart = websiteImg("webTitle.jpeg");
+import { keyart } from "@/lib/sthlm1646-images";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/our-games")({
   head: () => ({
@@ -39,16 +38,23 @@ function OurGamesPage() {
 
       <section className="mx-auto max-w-6xl px-6 pb-32 md:px-8">
         <Reveal>
-          <div className="relative grid overflow-hidden rounded-2xl border border-border/50 bg-card md:grid-cols-[5fr_4fr]">
-            <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[22rem]">
-              <img
-                src={keyart}
-                alt="Stockholm1646 key art"
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-card" />
-            </div>
+          <div
+            className={cn(
+              "relative grid overflow-hidden rounded-2xl border border-border/50 bg-card",
+              keyart && "md:grid-cols-[5fr_4fr]",
+            )}
+          >
+            {keyart && (
+              <div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[22rem]">
+                <img
+                  src={keyart}
+                  alt="Stockholm1646 key art"
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-card" />
+              </div>
+            )}
             <div className="relative flex flex-col p-8 md:p-12">
               <p className="text-sm tracking-[0.04em] text-foreground/45">Demo Coming Soon</p>
               <h2 className="mt-6 font-display text-4xl font-medium leading-[1.02] md:text-5xl">

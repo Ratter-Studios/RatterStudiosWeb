@@ -5,13 +5,10 @@ import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { CtaLink, PillLink } from "@/components/cta-link";
-import { websiteImg } from "@/lib/assets";
+import { keyart, shots } from "@/lib/sthlm1646-images";
 import { ZoomableImage } from "@/components/zoomable-image";
 
-const titleImage = websiteImg("webTitle.jpeg");
-const shot1 = websiteImg("devCapture1.jpeg");
-const shot2 = websiteImg("devCapture2.jpeg");
-const shot3 = websiteImg("devCapture3.jpeg");
+const [shot1, shot2, shot3] = shots;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -41,16 +38,18 @@ function Index() {
     <SiteLayout>
       {/* --- Hero --- */}
       <section className="relative flex min-h-svh items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={titleImage}
-            alt=""
-            width={1920}
-            height={1080}
-            className="ken-burns h-full w-full object-cover opacity-70"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
-        </div>
+        {keyart && (
+          <div className="absolute inset-0">
+            <img
+              src={keyart}
+              alt=""
+              width={1920}
+              height={1080}
+              className="ken-burns h-full w-full object-cover opacity-70"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
+          </div>
+        )}
         {/* Candlelight glow */}
         <div
           aria-hidden
@@ -128,23 +127,25 @@ function Index() {
             </div>
           </Reveal>
 
-          <Reveal delay={150}>
-            <div className="grid grid-cols-2 gap-3">
-              <ZoomableImage
-                src={shot1}
-                alt="Stockholm1646 concept 1"
-                className="col-span-2 aspect-video overflow-hidden rounded-2xl border border-border/50"
-              />
-              {[shot2, shot3].map((src, i) => (
+          {shots.length >= 3 && (
+            <Reveal delay={150}>
+              <div className="grid grid-cols-2 gap-3">
                 <ZoomableImage
-                  key={i}
-                  src={src}
-                  alt={`Stockholm1646 concept ${i + 2}`}
-                  className="aspect-square overflow-hidden rounded-2xl border border-border/50"
+                  src={shot1}
+                  alt="Stockholm1646 concept 1"
+                  className="col-span-2 aspect-video overflow-hidden rounded-2xl border border-border/50"
                 />
-              ))}
-            </div>
-          </Reveal>
+                {[shot2, shot3].map((src, i) => (
+                  <ZoomableImage
+                    key={i}
+                    src={src}
+                    alt={`Stockholm1646 concept ${i + 2}`}
+                    className="aspect-square overflow-hidden rounded-2xl border border-border/50"
+                  />
+                ))}
+              </div>
+            </Reveal>
+          )}
         </div>
       </section>
 

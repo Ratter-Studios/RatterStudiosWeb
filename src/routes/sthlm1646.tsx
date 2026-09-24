@@ -1,15 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, type CSSProperties } from "react";
-import { ChevronDown, Download } from "lucide-react";
+import { Download } from "lucide-react";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { pillClasses } from "@/components/cta-link";
-import { websiteImg } from "@/lib/assets";
+import { DropdownPanel } from "@/components/dropdown-panel";
+import { keyart, oldShots, shots } from "@/lib/sthlm1646-images";
 import { ZoomableImage } from "@/components/zoomable-image";
 import { cn } from "@/lib/utils";
-
-const keyart = websiteImg("webTitle.jpeg");
 
 export const Route = createFileRoute("/sthlm1646")({
   head: () => ({
@@ -45,10 +44,6 @@ export const Route = createFileRoute("/sthlm1646")({
   }),
   component: GamesPage,
 });
-
-const shots = ["webTitle", "devCapture1", "devCapture2", "devCapture3", "devCapture4", "devCapture5"].map(
-  (n) => websiteImg(`${n}.jpeg`),
-);
 
 const facts = [
   { label: "Setting", value: "Stockholm, 1646" },
@@ -138,10 +133,12 @@ function GamesPage() {
     <SiteLayout>
       <section className="relative">
         {/* Cinematic keyart, fading into the page behind the hero */}
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[78vh] overflow-hidden">
-          <img src={keyart} alt="" className="ken-burns h-full w-full object-cover opacity-35" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/80 to-background" />
-        </div>
+        {keyart && (
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-[78vh] overflow-hidden">
+            <img src={keyart} alt="" className="ken-burns h-full w-full object-cover opacity-35" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/65 via-background/80 to-background" />
+          </div>
+        )}
 
         <div className="relative mx-auto max-w-6xl px-6 pb-32 pt-44 md:px-8 md:pt-52">
           <div className="grid gap-10 md:grid-cols-[15rem_1fr] md:gap-14 lg:grid-cols-[17rem_1fr] lg:gap-20">
@@ -237,17 +234,43 @@ function GamesPage() {
                     }
                   />
                 </Reveal>
-                <div className="mt-14 grid gap-5 sm:grid-cols-2">
-                  {shots.map((src, i) => (
-                    <Reveal key={i} delay={i * 120}>
-                      <ZoomableImage
-                        src={src}
-                        alt={`Stockholm1646 concept art ${i + 1}`}
-                        className="aspect-[4/5] overflow-hidden rounded-2xl border border-border/50 bg-card"
-                      />
-                    </Reveal>
-                  ))}
-                </div>
+                {(keyart || shots.length > 0) && (
+                  <div className="mt-14 grid gap-5 sm:grid-cols-2">
+                    {keyart && (
+                      <Reveal className="sm:col-span-2">
+                        <ZoomableImage
+                          src={keyart}
+                          alt="Stockholm1646 key art"
+                          className="aspect-[5/2] overflow-hidden rounded-2xl border border-border/50 bg-card"
+                        />
+                      </Reveal>
+                    )}
+                    {shots.map((src, i) => (
+                      <Reveal key={src} delay={(i % 2) * 120}>
+                        <ZoomableImage
+                          src={src}
+                          alt={`Stockholm1646 concept art ${i + 1}`}
+                          className="aspect-[4/5] overflow-hidden rounded-2xl border border-border/50 bg-card"
+                        />
+                      </Reveal>
+                    ))}
+                  </div>
+                )}
+
+                <Reveal className="mt-14">
+                  <DropdownPanel title="Older images">
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      {oldShots.map((src, i) => (
+                        <ZoomableImage
+                          key={src}
+                          src={src}
+                          alt={`Older Stockholm1646 image ${i + 1}`}
+                          className="aspect-video overflow-hidden rounded-xl border border-border/50 bg-background"
+                        />
+                      ))}
+                    </div>
+                  </DropdownPanel>
+                </Reveal>
               </div>
             </div>
           </div>
@@ -259,46 +282,13 @@ function GamesPage() {
 
 /** Collapsible playtest builds panel. */
 function PlaytestBuilds() {
-  const [open, setOpen] = useState(false);
   const builds = usePlaytestBuilds();
   const counts = useDownloadCounts();
 
   return (
-    <div className="rounded-2xl border border-border/50 bg-card shadow-xl shadow-black/40">
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        aria-controls="playtest-builds"
-        className="group flex w-full items-center justify-between gap-4 rounded-2xl p-6 text-left md:p-7"
-      >
-        <span className="font-display text-xl font-medium text-primary/90">Playtest builds</span>
-        <ChevronDown
-          aria-hidden
-          strokeWidth={1.75}
-          className={cn(
-            "h-5 w-5 shrink-0 text-primary/70 transition-[color,rotate] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-primary",
-            open && "rotate-180",
-          )}
-        />
-      </button>
-
-      {/* inert: no tabbing into hidden links */}
-      <div
-        id="playtest-builds"
-        inert={!open}
-        className={cn(
-          "grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-          open ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
-        )}
-      >
-        <div className="overflow-hidden">
-          <div className="mx-6 mb-6 border-t border-border/50 pt-6 md:mx-7 md:mb-7">
-            <BuildList builds={builds} counts={counts} />
-          </div>
-        </div>
-      </div>
-    </div>
+    <DropdownPanel title="Playtest builds">
+      <BuildList builds={builds} counts={counts} />
+    </DropdownPanel>
   );
 }
 
