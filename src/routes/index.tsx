@@ -7,8 +7,12 @@ import { SectionHeading } from "@/components/section-heading";
 import { CtaLink, PillLink } from "@/components/cta-link";
 import { keyart, shots } from "@/lib/sthlm1646-images";
 import { ZoomableImage } from "@/components/zoomable-image";
+import { websiteImg } from "@/lib/assets";
 
 const [shot1, shot2, shot3] = shots;
+
+const TEKNIKGEEK_ARTICLE =
+  "https://www.teknikgeek.se/gaming/svenska-indiestudion-bygger-ett-rpg-i-1600-talets-stockholm/";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -147,6 +151,27 @@ function Index() {
             </Reveal>
           )}
         </div>
+
+        {/* Press */}
+        <Reveal delay={200} className="mt-20 px-6">
+          <a
+            href={TEKNIKGEEK_ARTICLE}
+            target="_blank"
+            rel="noreferrer"
+            className="group mx-auto flex w-fit max-w-sm flex-col items-center rounded-2xl p-3 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            <span className="font-display text-xl italic leading-snug text-foreground/85 transition-colors duration-300 group-hover:text-primary sm:text-2xl">
+              “Swedish indie studio builds RPG in 1600's Stockholm”
+            </span>
+            <img
+              src={websiteImg("TKimg.png")}
+              alt="TeknikGeek"
+              width={474}
+              height={266}
+              className="mt-4 aspect-[474/66] w-56 object-cover opacity-85 transition-opacity duration-300 group-hover:opacity-100"
+            />
+          </a>
+        </Reveal>
       </section>
 
       {/* --- Studio principle + Inner Circle signup --- */}
