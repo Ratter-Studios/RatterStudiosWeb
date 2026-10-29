@@ -8,7 +8,7 @@ export const Route = createFileRoute("/privacy")({
       {
         name: "description",
         content:
-          "RATTER Studios privacy policy. We do not collect, store, or process personal data from visitors to our website.",
+          "RATTER Studios privacy policy. Browsing our website is anonymous; we only receive personal data when you send us playtest feedback.",
       },
       { property: "og:title", content: "Privacy Policy - Ratter Studios" },
       {
@@ -30,7 +30,7 @@ function PrivacyPage() {
           Privacy <em className="text-primary">Policy</em>
         </h1>
         <p className="mt-6 text-xs italic tracking-[0.05em] text-muted-foreground">
-          Effective Date · June 24, 2026
+          Effective Date · October 28, 2026
         </p>
 
         <div className="mt-16 space-y-12 text-foreground/80 leading-relaxed">
@@ -45,8 +45,21 @@ function PrivacyPage() {
                 We do not collect, store, or process any personal data from visitors to our website.
               </li>
               <li>We do not have accounts or user registrations.</li>
-              <li>We do not collect email addresses or contact details through this site.</li>
+              <li>
+                We do not collect email addresses or contact details through this site, except when
+                you choose to send us playtest feedback.
+              </li>
             </ul>
+          </section>
+
+          <section>
+            <h2 className="font-display text-2xl font-medium text-primary">Playtest feedback</h2>
+            <p className="mt-4">
+              When you send feedback through our playtest feedback form, your email address, your
+              message and the files you attach are emailed to our team through our email provider,
+              Resend. We use them only to improve the game and to reply to you, and we never share
+              or sell them. Ask us any time and we will delete them.
+            </p>
           </section>
 
           <section>

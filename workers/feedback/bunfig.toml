@@ -1,0 +1,5 @@
+[install]
+# 24h supply-chain guard, same as the root bunfig.toml.
+minimumReleaseAge = 86400
+# Each entry skips the guard for one package - confirm with the user first.
+minimumReleaseAgeExcludes = []

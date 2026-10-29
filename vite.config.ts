@@ -47,6 +47,10 @@ export default defineConfig({
       // served by a static host (GitHub Pages). crawlLinks follows <a> tags from
       // the home page to discover all routes automatically.
       prerender: { enabled: true, crawlLinks: true },
+      // Also writes an app shell that renders any route in the browser. The deploy uses it as
+      // 404.html, so pages that can't be pre-rendered (like /sthlm1646/<build>/feedback) work.
+      // maskPath isn't plain "/", or the shell would take the home page's place in the prerender.
+      spa: { enabled: true, maskPath: "/?shell" },
     }),
     viteReact(),
   ],

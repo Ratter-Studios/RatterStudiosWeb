@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "stockholm1646-feedback",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+  // Native Buffer for the base64 attachments
+  "compatibility_flags": ["nodejs_compat"],
+  // Served at https://stockholm1646-feedback.ratterstudios.workers.dev
+  "workers_dev": true,
+  // Logs in the Cloudflare dashboard
+  "observability": { "enabled": true },
+  // Builds and sends the email: a Durable Object gets far more CPU time than a free Worker's 10 ms
+  "durable_objects": { "bindings": [{ "name": "SENDER", "class_name": "FeedbackSender" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["FeedbackSender"] }],
+  // Sends per minute per IP
+  "ratelimits": [
+    { "name": "LIMITER", "namespace_id": "1646", "simple": { "limit": 3, "period": 60 } },
+  ],
+  "vars": {
+    // Needs ratterstudios.com verified in Resend
+    "FROM": "Stockholm1646 Feedback <feedback@ratterstudios.com>",
+  },
+  // Secrets, set with `wrangler secret put <name>` (locally in .dev.vars):
+  //   RESEND_API_KEY - Resend API key with sending access
+  //   FEEDBACK_TO    - comma-separated recipients, kept out of this public repo
+}

@@ -17,6 +17,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GameUpdatesIndexRouteImport } from './routes/game-updates/index'
 import { Route as GameUpdatesSlugRouteImport } from './routes/game-updates/$slug'
+import { Route as Sthlm1646BuildFeedbackRouteImport } from './routes/sthlm1646/$build/feedback'
 
 const Sthlm1646Route = Sthlm1646RouteImport.update({
   id: '/sthlm1646',
@@ -58,6 +59,11 @@ const GameUpdatesSlugRoute = GameUpdatesSlugRouteImport.update({
   path: '/game-updates/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Sthlm1646BuildFeedbackRoute = Sthlm1646BuildFeedbackRouteImport.update({
+  id: '/$build/feedback',
+  path: '/$build/feedback',
+  getParentRoute: () => Sthlm1646Route,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -65,9 +71,10 @@ export interface FileRoutesByFullPath {
   '/community': typeof CommunityRoute
   '/our-games': typeof OurGamesRoute
   '/privacy': typeof PrivacyRoute
-  '/sthlm1646': typeof Sthlm1646Route
+  '/sthlm1646': typeof Sthlm1646RouteWithChildren
   '/game-updates/$slug': typeof GameUpdatesSlugRoute
   '/game-updates/': typeof GameUpdatesIndexRoute
+  '/sthlm1646/$build/feedback': typeof Sthlm1646BuildFeedbackRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -75,9 +82,10 @@ export interface FileRoutesByTo {
   '/community': typeof CommunityRoute
   '/our-games': typeof OurGamesRoute
   '/privacy': typeof PrivacyRoute
-  '/sthlm1646': typeof Sthlm1646Route
+  '/sthlm1646': typeof Sthlm1646RouteWithChildren
   '/game-updates/$slug': typeof GameUpdatesSlugRoute
   '/game-updates': typeof GameUpdatesIndexRoute
+  '/sthlm1646/$build/feedback': typeof Sthlm1646BuildFeedbackRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -86,9 +94,10 @@ export interface FileRoutesById {
   '/community': typeof CommunityRoute
   '/our-games': typeof OurGamesRoute
   '/privacy': typeof PrivacyRoute
-  '/sthlm1646': typeof Sthlm1646Route
+  '/sthlm1646': typeof Sthlm1646RouteWithChildren
   '/game-updates/$slug': typeof GameUpdatesSlugRoute
   '/game-updates/': typeof GameUpdatesIndexRoute
+  '/sthlm1646/$build/feedback': typeof Sthlm1646BuildFeedbackRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/sthlm1646'
     | '/game-updates/$slug'
     | '/game-updates/'
+    | '/sthlm1646/$build/feedback'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/sthlm1646'
     | '/game-updates/$slug'
     | '/game-updates'
+    | '/sthlm1646/$build/feedback'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/sthlm1646'
     | '/game-updates/$slug'
     | '/game-updates/'
+    | '/sthlm1646/$build/feedback'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -129,7 +141,7 @@ export interface RootRouteChildren {
   CommunityRoute: typeof CommunityRoute
   OurGamesRoute: typeof OurGamesRoute
   PrivacyRoute: typeof PrivacyRoute
-  Sthlm1646Route: typeof Sthlm1646Route
+  Sthlm1646Route: typeof Sthlm1646RouteWithChildren
   GameUpdatesSlugRoute: typeof GameUpdatesSlugRoute
   GameUpdatesIndexRoute: typeof GameUpdatesIndexRoute
 }
@@ -192,8 +204,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GameUpdatesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sthlm1646/$build/feedback': {
+      id: '/sthlm1646/$build/feedback'
+      path: '/$build/feedback'
+      fullPath: '/sthlm1646/$build/feedback'
+      preLoaderRoute: typeof Sthlm1646BuildFeedbackRouteImport
+      parentRoute: typeof Sthlm1646Route
+    }
   }
 }
+
+interface Sthlm1646RouteChildren {
+  Sthlm1646BuildFeedbackRoute: typeof Sthlm1646BuildFeedbackRoute
+}
+
+const Sthlm1646RouteChildren: Sthlm1646RouteChildren = {
+  Sthlm1646BuildFeedbackRoute: Sthlm1646BuildFeedbackRoute,
+}
+
+const Sthlm1646RouteWithChildren = Sthlm1646Route._addFileChildren(
+  Sthlm1646RouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -201,7 +232,7 @@ const rootRouteChildren: RootRouteChildren = {
   CommunityRoute: CommunityRoute,
   OurGamesRoute: OurGamesRoute,
   PrivacyRoute: PrivacyRoute,
-  Sthlm1646Route: Sthlm1646Route,
+  Sthlm1646Route: Sthlm1646RouteWithChildren,
   GameUpdatesSlugRoute: GameUpdatesSlugRoute,
   GameUpdatesIndexRoute: GameUpdatesIndexRoute,
 }

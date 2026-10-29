@@ -1,6 +1,6 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
 import { useEffect, useState, type CSSProperties } from "react";
-import { Download } from "lucide-react";
+import { Download, MessageSquareText } from "lucide-react";
 import { SiteLayout } from "@/components/site-layout";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
@@ -83,6 +83,9 @@ function toBuilds(releases: Release[]): Build[] {
       return [...files.values()];
     });
 }
+
+/** "v0.15.2-alpha-dev1.zip" -> "v0.15.2-alpha-dev1", the name the game puts in its feedback link. */
+const buildName = (file: string) => file.replace(/\.zip$/i, "");
 
 const formatSize = (bytes: number) =>
   bytes >= 1024 ** 3
@@ -276,6 +279,9 @@ function GamesPage() {
           </div>
         </div>
       </section>
+
+      {/* The feedback popup, at /sthlm1646/<build>/feedback */}
+      <Outlet />
     </SiteLayout>
   );
 }
@@ -319,7 +325,7 @@ function BuildList({
   return (
     <>
       <ul className="space-y-6">
-        {builds.slice(0, MAX_BUILDS).map((build) => {
+        {builds.slice(0, MAX_BUILDS).map((build, index) => {
           const key = `${build.tag}/${build.file}`;
           return (
             <li key={key}>
@@ -347,6 +353,17 @@ function BuildList({
                   </span>
                 )}
               </div>
+              {index === 0 && (
+                <Link
+                  to="/sthlm1646/$build/feedback"
+                  params={{ build: buildName(build.file) }}
+                  resetScroll={false}
+                  className={cn(pillClasses, "mt-3 gap-2")}
+                >
+                  <MessageSquareText aria-hidden className="h-3.5 w-3.5" strokeWidth={1.75} />
+                  Feedback
+                </Link>
+              )}
             </li>
           );
         })}
